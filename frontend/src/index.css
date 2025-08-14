@@ -1,0 +1,310 @@
+:root {
+  font-family: 'Fira Code', 'Roboto Mono', 'Consolas', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Enhanced Dark Theme with Better Contrast */
+  /* Background Colors - Lighter for better contrast */
+  --bg-primary: #0f0f17;
+  --bg-secondary: #1a1a26;
+  --bg-tertiary: #252538;
+  --bg-elevated: #33334d;
+  
+  /* Accent Colors - Brighter for better visibility */
+  --accent-primary: #00c8ff;
+  --accent-secondary: #c28cff;
+  --accent-success: #3bea7f;
+  --accent-warning: #ffb347;
+  --accent-danger: #ff6b81;
+  --accent-info: #4dabf7;
+  --accent-purple: #b07dff;
+  
+  /* Text Colors - Maximum contrast for best readability */
+  --text-primary: #ffffff;
+  --text-secondary: #f0f4f8;
+  --text-muted: #b8c2cc;
+  
+  /* Text Styles - Slightly larger base font size */
+  --text-xs: 0.8rem;
+  --text-sm: 0.95rem;
+  --text-base: 1.05rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.7rem;
+  --text-3xl: 2.1rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.2rem;
+  --text-6xl: 4rem;
+  
+  /* Border Colors - More contrast */
+  --border-primary: #3a3a5c;
+  --border-secondary: #2d2d4a;
+  --border-accent: #00b4d8;
+  
+  /* Shadows - Enhanced for better depth */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --shadow-outline: 0 0 0 3px rgba(0, 200, 255, 0.7);
+  --shadow-neon: 0 0 15px rgba(0, 200, 255, 0.7), 0 0 25px rgba(0, 200, 255, 0.4);
+  --shadow-neon-hover: 0 0 20px rgba(0, 200, 255, 0.9), 0 0 40px rgba(0, 200, 255, 0.6);
+  
+  /* Effects */
+  --glow-primary: 0 0 15px rgba(0, 180, 216, 0.3);
+  --glow-success: 0 0 15px rgba(56, 176, 0, 0.3);
+  --glow-warning: 0 0 15px rgba(255, 158, 0, 0.3);
+  --glow-danger: 0 0 15px rgba(255, 0, 84, 0.3);
+  
+  /* Gradients - More vibrant */
+  --gradient-primary: linear-gradient(135deg, var(--accent-primary), #7c4dff);
+  --gradient-success: linear-gradient(135deg, var(--accent-success), #00e676);
+  --gradient-danger: linear-gradient(135deg, var(--accent-danger), #ff6b6b);
+  --gradient-warning: linear-gradient(135deg, var(--accent-warning), #ffaa00);
+  --gradient-info: linear-gradient(135deg, var(--accent-info), #4dabf7);
+  --gradient-purple: linear-gradient(135deg, var(--accent-purple), #9c27b0);
+  
+  /* Transitions - Smoother */
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border Radius - Slightly larger */
+  --radius-sm: 0.3rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-full: 9999px;
+  
+  /* Z-Index */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-auto: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Custom styles for the cyber range platform */
+.navbar-brand {
+  font-weight: 700;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 10px var(--neon-cyan);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 20px var(--neon-pink);
+}
+
+/* Card styling with neon glow */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 0 25px rgba(0, 255, 255, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.4);
+  border-color: var(--neon-pink);
+}
+
+.card-body {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.card-title {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.card-text {
+  color: var(--text-secondary);
+}
+
+/* Custom badge styles with neon colors */
+.badge.bg-success {
+  background-color: var(--success-neon) !important;
+  color: var(--bg-primary) !important;
+  text-shadow: 0 0 5px var(--success-neon);
+  border: 1px solid var(--success-neon);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.badge.bg-warning {
+  background-color: var(--warning-neon) !important;
+  color: var(--bg-primary) !important;
+  text-shadow: 0 0 5px var(--warning-neon);
+  border: 1px solid var(--warning-neon);
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+.badge.bg-danger {
+  background-color: var(--danger-neon) !important;
+  color: var(--text-primary) !important;
+  text-shadow: 0 0 5px var(--danger-neon);
+  border: 1px solid var(--danger-neon);
+  box-shadow: 0 0 10px rgba(255, 7, 58, 0.3);
+}
+
+.badge.bg-info {
+  background-color: var(--info-neon) !important;
+  color: var(--bg-primary) !important;
+  text-shadow: 0 0 5px var(--info-neon);
+  border: 1px solid var(--info-neon);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Footer styles */
+.footer {
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  border-top: 2px solid var(--border-glow);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+/* Lab session console with enhanced cyberpunk styling */
+.console-container {
+  background-color: var(--bg-primary);
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  box-shadow: 
+    inset 0 0 20px rgba(57, 255, 20, 0.1),
+    0 0 30px rgba(57, 255, 20, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.console-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(57, 255, 20, 0.1),
+    transparent
+  );
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Custom button styles with neon glow effects */
+.btn-primary {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-blue));
+  border: 2px solid var(--neon-cyan);
+  color: var(--bg-primary);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--neon-cyan);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.3),
+    inset 0 0 15px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+  border-color: var(--neon-pink);
+  box-shadow: 
+    0 0 25px rgba(255, 16, 240, 0.5),
+    inset 0 0 15px rgba(255, 16, 240, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, var(--success-neon), #2dff00);
+  border: 2px solid var(--success-neon);
+  color: var(--bg-primary);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--success-neon);
+  box-shadow: 
+    0 0 15px rgba(57, 255, 20, 0.3),
+    inset 0 0 15px rgba(57, 255, 20, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  box-shadow: 
+    0 0 25px rgba(57, 255, 20, 0.5),
+    inset 0 0 15px rgba(57, 255, 20, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, var(--danger-neon), #ff4d6d);
+  border: 2px solid var(--danger-neon);
+  color: var(--text-primary);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--danger-neon);
+  box-shadow: 
+    0 0 15px rgba(255, 7, 58, 0.3),
+    inset 0 0 15px rgba(255, 7, 58, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  box-shadow: 
+    0 0 25px rgba(255, 7, 58, 0.5),
+    inset 0 0 15px rgba(255, 7, 58, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Additional neon button variants */
+.btn-outline-primary {
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.btn-outline-light {
+  background: transparent;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--neon-green);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+}

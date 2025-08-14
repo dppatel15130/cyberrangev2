@@ -1,0 +1,6442 @@
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 401,
+  "duration": "93ms"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 401,
+  "duration": "60ms"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 401,
+  "duration": "67ms"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 401,
+  "duration": "72ms"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 401,
+  "duration": "38ms"
+}
+2025-08-11 09:33:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 401,
+  "duration": "37ms"
+}
+2025-08-11 09:33:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "POST",
+  "url": "/api/auth/login",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:05 [INFO]: Auth Event: LOGIN_ATTEMPT
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "AUTH",
+  "userId": null,
+  "username": "admin",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Auth Event: LOGIN_SUCCESS
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "AUTH",
+  "userId": 1,
+  "username": "admin",
+  "role": "admin",
+  "ip": "::ffff:127.0.0.1"
+}
+2025-08-11 09:34:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "POST",
+  "url": "/api/auth/login",
+  "statusCode": 200,
+  "duration": "495ms"
+}
+2025-08-11 09:34:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 09:34:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "51ms",
+  "userId": 1
+}
+2025-08-11 09:34:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "73ms",
+  "userId": 1
+}
+2025-08-11 09:34:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "192ms",
+  "userId": 1
+}
+2025-08-11 09:34:07 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "137ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "56ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "96ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "99ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "114ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "141ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "189ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "92ms",
+  "userId": 1
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "316ms"
+}
+2025-08-11 09:34:09 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "258ms"
+}
+2025-08-11 09:34:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "104ms",
+  "userId": 1
+}
+2025-08-11 09:34:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "115ms",
+  "userId": 1
+}
+2025-08-11 09:34:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "99ms",
+  "userId": 1
+}
+2025-08-11 09:34:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "165ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "27ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "46ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "48ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "119ms",
+  "userId": 1
+}
+2025-08-11 09:34:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "64ms",
+  "userId": 1
+}
+2025-08-11 09:34:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "39ms",
+  "userId": 1
+}
+2025-08-11 09:34:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "94ms",
+  "userId": 1
+}
+2025-08-11 09:34:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "170ms"
+}
+2025-08-11 09:34:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "148ms"
+}
+2025-08-11 09:35:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 09:35:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 09:35:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "25ms",
+  "userId": 1
+}
+2025-08-11 09:35:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 09:35:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "26ms",
+  "userId": 1
+}
+2025-08-11 09:35:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 09:35:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "71ms",
+  "userId": 1
+}
+2025-08-11 09:35:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "62ms",
+  "userId": 1
+}
+2025-08-11 09:35:03 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:03 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:03 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "39ms",
+  "userId": 1
+}
+2025-08-11 09:35:03 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "42ms",
+  "userId": 1
+}
+2025-08-11 09:35:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "52ms",
+  "userId": 1
+}
+2025-08-11 09:35:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 09:35:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:35:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "125ms",
+  "userId": 1
+}
+2025-08-11 09:35:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "77ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "66ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "84ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "35ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "104ms",
+  "userId": 1
+}
+2025-08-11 09:45:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "83ms",
+  "userId": 1
+}
+2025-08-11 09:46:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "34ms",
+  "userId": 1
+}
+2025-08-11 09:46:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "24ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "73ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "126ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "124ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "209ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "89ms",
+  "userId": 1
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "318ms"
+}
+2025-08-11 09:46:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "255ms"
+}
+2025-08-11 09:46:14 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:14 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:14 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "47ms",
+  "userId": 1
+}
+2025-08-11 09:46:14 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 09:46:18 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:18 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:18 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "58ms",
+  "userId": 1
+}
+2025-08-11 09:46:18 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "36ms",
+  "userId": 1
+}
+2025-08-11 09:46:18 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:18 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:46:18 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "67ms",
+  "userId": 1
+}
+2025-08-11 09:46:18 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "60ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "81ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "99ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "44ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "63ms",
+  "userId": 1
+}
+2025-08-11 09:51:58 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "83ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "33ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "27ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "48ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "137ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "321ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "73ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "228ms",
+  "userId": 1
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "383ms"
+}
+2025-08-11 09:52:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "203ms"
+}
+2025-08-11 09:52:08 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:08 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 09:52:08 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:08 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 09:52:14 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:14 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:14 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "58ms",
+  "userId": 1
+}
+2025-08-11 09:52:14 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "46ms",
+  "userId": 1
+}
+2025-08-11 09:52:16 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:16 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:16 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "38ms",
+  "userId": 1
+}
+2025-08-11 09:52:16 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "46ms",
+  "userId": 1
+}
+2025-08-11 09:52:16 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:16 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:52:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "153ms",
+  "userId": 1
+}
+2025-08-11 09:52:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "145ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "66ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "84ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "82ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "167ms",
+  "userId": 1
+}
+2025-08-11 09:55:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "94ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "26ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "21ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "52ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "48ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "49ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "78ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "135ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "142ms",
+  "userId": 1
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "208ms"
+}
+2025-08-11 09:55:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "222ms"
+}
+2025-08-11 09:55:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:57 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "52ms",
+  "userId": 1
+}
+2025-08-11 09:55:57 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "52ms",
+  "userId": 1
+}
+2025-08-11 09:55:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:55:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 09:55:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "30ms",
+  "userId": 1
+}
+2025-08-11 09:56:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 09:56:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "54ms",
+  "userId": 1
+}
+2025-08-11 09:56:15 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:15 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:15 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "40ms",
+  "userId": 1
+}
+2025-08-11 09:56:15 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "35ms",
+  "userId": 1
+}
+2025-08-11 09:56:17 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:17 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 09:56:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "38ms",
+  "userId": 1
+}
+2025-08-11 09:56:17 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:17 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "105ms",
+  "userId": 1
+}
+2025-08-11 09:56:17 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "116ms",
+  "userId": 1
+}
+2025-08-11 09:56:20 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:20 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:20 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "48ms",
+  "userId": 1
+}
+2025-08-11 09:56:20 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "54ms",
+  "userId": 1
+}
+2025-08-11 09:56:34 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:34 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:34 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:34 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "176ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "165ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "173ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "187ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "141ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "44ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "101ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "211ms"
+}
+2025-08-11 09:56:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "88ms",
+  "userId": 1
+}
+2025-08-11 09:56:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "127ms"
+}
+2025-08-11 10:01:40 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:40 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:40 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "77ms",
+  "userId": 1
+}
+2025-08-11 10:01:40 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "76ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "26ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "144ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "193ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "69ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "251ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "252ms",
+  "userId": 1
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "298ms"
+}
+2025-08-11 10:01:41 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "218ms"
+}
+2025-08-11 10:01:50 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:50 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 10:01:50 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:50 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 10:01:53 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:53 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:53 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "59ms",
+  "userId": 1
+}
+2025-08-11 10:01:53 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "62ms",
+  "userId": 1
+}
+2025-08-11 10:01:54 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:54 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:54 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "28ms",
+  "userId": 1
+}
+2025-08-11 10:01:54 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 10:01:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:55 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:01:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:55 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "25ms",
+  "userId": 1
+}
+2025-08-11 10:01:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "57ms",
+  "userId": 1
+}
+2025-08-11 10:01:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "76ms",
+  "userId": 1
+}
+2025-08-11 10:01:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:01:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "42ms",
+  "userId": 1
+}
+2025-08-11 10:01:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 10:02:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "36ms",
+  "userId": 1
+}
+2025-08-11 10:02:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 10:02:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "75ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "86ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "100ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "189ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "77ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "129ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "255ms"
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "88ms",
+  "userId": 1
+}
+2025-08-11 10:02:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "143ms"
+}
+2025-08-11 10:08:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:35 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "72ms",
+  "userId": 1
+}
+2025-08-11 10:08:35 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "98ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "57ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "68ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "92ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "116ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "68ms",
+  "userId": 1
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "200ms"
+}
+2025-08-11 10:08:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "152ms"
+}
+2025-08-11 10:08:48 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:48 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:48 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 10:08:48 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "40ms",
+  "userId": 1
+}
+2025-08-11 10:08:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:55 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "43ms",
+  "userId": 1
+}
+2025-08-11 10:08:55 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "64ms",
+  "userId": 1
+}
+2025-08-11 10:08:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:55 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "69ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "122ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "148ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "112ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "203ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "154ms",
+  "userId": 1
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "180ms"
+}
+2025-08-11 10:08:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "143ms"
+}
+2025-08-11 10:09:07 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:07 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:07 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "66ms",
+  "userId": 1
+}
+2025-08-11 10:09:07 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "69ms",
+  "userId": 1
+}
+2025-08-11 10:09:13 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:13 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "35ms",
+  "userId": 1
+}
+2025-08-11 10:09:13 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:13 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "23ms",
+  "userId": 1
+}
+2025-08-11 10:09:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 10:09:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "21ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "38ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "27ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "75ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "116ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "187ms"
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "150ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "168ms",
+  "userId": 1
+}
+2025-08-11 10:09:24 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "158ms"
+}
+2025-08-11 10:15:28 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:28 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:28 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "60ms",
+  "userId": 1
+}
+2025-08-11 10:15:28 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "77ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "34ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "113ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "89ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "539ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "660ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "69ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "539ms",
+  "userId": 1
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "662ms"
+}
+2025-08-11 10:15:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "145ms"
+}
+2025-08-11 10:15:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "24ms",
+  "userId": 1
+}
+2025-08-11 10:15:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 10:15:40 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:40 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:40 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "36ms",
+  "userId": 1
+}
+2025-08-11 10:15:40 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "32ms",
+  "userId": 1
+}
+2025-08-11 10:15:42 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:42 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "24ms",
+  "userId": 1
+}
+2025-08-11 10:15:42 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:42 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 10:15:42 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:42 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:42 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "62ms",
+  "userId": 1
+}
+2025-08-11 10:15:42 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "55ms",
+  "userId": 1
+}
+2025-08-11 10:15:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "21ms",
+  "userId": 1
+}
+2025-08-11 10:15:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 10:15:49 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:49 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:49 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 10:15:49 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "38ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "44ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "39ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "103ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "39ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "175ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "148ms",
+  "userId": 1
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "170ms"
+}
+2025-08-11 10:15:51 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "173ms"
+}
+2025-08-11 10:15:52 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:52 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:15:52 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "29ms",
+  "userId": 1
+}
+2025-08-11 10:15:52 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "23ms",
+  "userId": 1
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "142ms",
+  "userId": 1
+}
+2025-08-11 10:16:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "146ms",
+  "userId": 1
+}
+2025-08-11 10:16:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "137ms",
+  "userId": 1
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "92ms",
+  "userId": 1
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:05 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "56ms",
+  "userId": 1
+}
+2025-08-11 10:16:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "187ms"
+}
+2025-08-11 10:16:06 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:16:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "221ms",
+  "userId": 1
+}
+2025-08-11 10:16:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "65ms",
+  "userId": 1
+}
+2025-08-11 10:16:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "91ms",
+  "userId": 1
+}
+2025-08-11 10:16:06 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "607ms"
+}
+2025-08-11 10:22:11 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:11 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:11 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 10:22:11 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "57ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "18ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "21ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "246ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "43ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "126ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "101ms",
+  "userId": 1
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "191ms"
+}
+2025-08-11 10:22:12 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "190ms"
+}
+2025-08-11 10:23:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 10:23:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "37ms",
+  "userId": 1
+}
+2025-08-11 10:23:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 10:23:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "49ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "86ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "89ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "114ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "117ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "165ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "107ms",
+  "userId": 1
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "170ms"
+}
+2025-08-11 10:23:01 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "189ms"
+}
+2025-08-11 10:23:08 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:08 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "19ms",
+  "userId": 1
+}
+2025-08-11 10:23:08 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:23:08 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "14ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "147ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "148ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "130ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "84ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "80ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "208ms"
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "61ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "194ms"
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "124ms",
+  "userId": 1
+}
+2025-08-11 10:24:22 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "101ms",
+  "userId": 1
+}
+2025-08-11 10:25:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:25:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "41ms",
+  "userId": 1
+}
+2025-08-11 10:25:56 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:25:56 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "23ms",
+  "userId": 1
+}
+2025-08-11 10:30:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 200,
+  "duration": "83ms",
+  "userId": 1
+}
+2025-08-11 10:30:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/me",
+  "statusCode": 304,
+  "duration": "58ms",
+  "userId": 1
+}
+2025-08-11 10:30:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:43 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "22ms",
+  "userId": 1
+}
+2025-08-11 10:30:43 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "16ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "13ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "54ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "35ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "223ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "62ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "318ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "185ms",
+  "userId": 1
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "218ms"
+}
+2025-08-11 10:30:45 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "126ms"
+}
+2025-08-11 10:30:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:59 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:30:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "57ms",
+  "userId": 1
+}
+2025-08-11 10:30:59 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "50ms",
+  "userId": 1
+}
+2025-08-11 10:31:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:00 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "39ms",
+  "userId": 1
+}
+2025-08-11 10:31:00 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "26ms",
+  "userId": 1
+}
+2025-08-11 10:31:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "30ms",
+  "userId": 1
+}
+2025-08-11 10:31:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "31ms",
+  "userId": 1
+}
+2025-08-11 10:31:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:02 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "59ms",
+  "userId": 1
+}
+2025-08-11 10:31:02 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "62ms",
+  "userId": 1
+}
+2025-08-11 10:31:03 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:03 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:03 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "38ms",
+  "userId": 1
+}
+2025-08-11 10:31:03 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "42ms",
+  "userId": 1
+}
+2025-08-11 10:31:21 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:21 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:21 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "66ms",
+  "userId": 1
+}
+2025-08-11 10:31:21 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "45ms",
+  "userId": 1
+}
+2025-08-11 10:31:26 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:26 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:26 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "30ms",
+  "userId": 1
+}
+2025-08-11 10:31:26 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "32ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "21ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 200,
+  "duration": "27ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 200,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/auth/users",
+  "statusCode": 304,
+  "duration": "61ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/vms",
+  "statusCode": 304,
+  "duration": "53ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 304,
+  "duration": "186ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/leaderboard?limit=10",
+  "statusCode": 200,
+  "duration": "187ms",
+  "userId": 1
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "206ms"
+}
+2025-08-11 10:31:29 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/status",
+  "statusCode": 200,
+  "duration": "204ms"
+}
+2025-08-11 10:31:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "24ms",
+  "userId": 1
+}
+2025-08-11 10:31:36 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:36 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "27ms",
+  "userId": 1
+}
+2025-08-11 10:31:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 200,
+  "duration": "23ms",
+  "userId": 1
+}
+2025-08-11 10:31:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/labs",
+  "statusCode": 304,
+  "duration": "20ms",
+  "userId": 1
+}
+2025-08-11 10:31:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:38 [INFO]: Incoming Request
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+}
+2025-08-11 10:31:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 200,
+  "duration": "66ms",
+  "userId": 1
+}
+2025-08-11 10:31:38 [INFO]: Response Sent
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ACCESS",
+  "method": "GET",
+  "url": "/api/flags/user-stats",
+  "statusCode": 304,
+  "duration": "67ms",
+  "userId": 1
+}

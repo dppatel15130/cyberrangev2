@@ -1,0 +1,502 @@
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { 
+  Container, 
+  Row, 
+  Col, 
+  Card, 
+  Button, 
+  Badge, 
+  Alert, 
+  Spinner,
+  Modal,
+  Form,
+  ListGroup,
+  Tab,
+  Tabs
+} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faFire, 
+  faUsers, 
+  faTrophy, 
+  faPlay, 
+  faStop,
+  faClock,
+  faPlus,
+  faEye,
+  faChartLine,
+  faExclamationTriangle
+} from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../context/AuthContext';
+import cyberwarService from '../../services/cyberwarService';
+import useWebSocket from '../../hooks/useWebSocket';
+
+const MatchLobby = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  // State management
+  const [activeMatches, setActiveMatches] = useState([]);
+  const [upcomingMatches, setUpcomingMatches] = useState([]);
+  const [userTeams, setUserTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showCreateTeam, setShowCreateTeam] = useState(false);
+  const [newTeamData, setNewTeamData] = useState({
+    name: '',
+    description: '',
+    color: '#007bff',
+    maxMembers: 4
+  });
+
+  // WebSocket for real-time updates
+  const wsUrl = `ws://localhost:5000/ws/scoring`;
+  const { lastMessage, isConnected } = useWebSocket(wsUrl, {
+    onMessage: (data) => {
+      if (data.type === 'match_started' || data.type === 'match_ended') {
+        fetchMatches(); // Refresh matches on status change
+      }
+    }
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [activeRes, allMatches, teamsRes] = await Promise.all([
+        cyberwarService.getActiveMatches(),
+        cyberwarService.getMatches({ status: 'ready' }),
+        cyberwarService.getTeams({ search: '', status: 'active' })
+      ]);
+      
+      setActiveMatches(activeRes || []);
+      setUpcomingMatches(allMatches.matches || []);
+      
+      // Filter teams where user is a member
+      const userTeamsList = (teamsRes.teams || []).filter(team => 
+        team.members && team.members.some(member => member.id === user.id)
+      );
+      setUserTeams(userTeamsList);
+      
+    } catch (err) {
+      console.error('Failed to fetch lobby data:', err);
+      setError('Failed to load lobby data. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchMatches = async () => {
+    try {
+      const [activeRes, upcomingRes] = await Promise.all([
+        cyberwarService.getActiveMatches(),
+        cyberwarService.getMatches({ status: 'ready' })
+      ]);
+      setActiveMatches(activeRes || []);
+      setUpcomingMatches(upcomingRes.matches || []);
+    } catch (err) {
+      console.error('Failed to refresh matches:', err);
+    }
+  };
+
+  const handleCreateTeam = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.createTeam(newTeamData);
+      setShowCreateTeam(false);
+      setNewTeamData({ name: '', description: '', color: '#007bff', maxMembers: 4 });
+      fetchData(); // Refresh data
+    } catch (err) {
+      console.error('Failed to create team:', err);
+      setError('Failed to create team. Please try again.');
+    }
+  };
+
+  const joinMatch = (matchId) => {
+    navigate(`/cyberwar/match/${matchId}`);
+  };
+
+  const viewMatch = (matchId) => {
+    navigate(`/cyberwar/match/${matchId}/spectate`);
+  };
+
+  const getMatchStatusBadge = (match) => {
+    switch (match.status) {
+      case 'active':
+        return <Badge bg="success"><FontAwesomeIcon icon={faPlay} className="me-1" />Active</Badge>;
+      case 'ready':
+        return <Badge bg="warning"><FontAwesomeIcon icon={faClock} className="me-1" />Ready</Badge>;
+      case 'completed':
+        return <Badge bg="secondary"><FontAwesomeIcon icon={faStop} className="me-1" />Completed</Badge>;
+      default:
+        return <Badge bg="info">{match.status}</Badge>;
+    }
+  };
+
+  const formatDuration = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+  };
+
+  if (loading) {
+    return (
+      <Container className="py-5 text-center">
+        <Spinner animation="border" variant="primary" size="lg" />
+        <p className="mt-3">Loading cyber-warfare lobby...</p>
+      </Container>
+    );
+  }
+
+  return (
+    <Container className="py-4">
+      {/* Header */}
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h1 className="mb-0">
+            <FontAwesomeIcon icon={faFire} className="me-2 text-danger" />
+            Cyber-Warfare Lobby
+          </h1>
+          <p className="text-muted mt-1">
+            Join team-based cyber-warfare matches in real-time
+            {isConnected && (
+              <Badge bg="success" className="ms-2">
+                <span className="pulse-dot"></span>
+                Live
+              </Badge>
+            )}
+          </p>
+        </div>
+        <div>
+          {userTeams.length === 0 && (
+            <Button variant="outline-primary" onClick={() => setShowCreateTeam(true)}>
+              <FontAwesomeIcon icon={faPlus} className="me-1" />
+              Create Team
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {error && (
+        <Alert variant="danger" dismissible onClose={() => setError(null)}>
+          <FontAwesomeIcon icon={faExclamationTriangle} className="me-2" />
+          {error}
+        </Alert>
+      )}
+
+      <Row>
+        <Col lg={8}>
+          {/* Active Matches */}
+          <Card className="mb-4">
+            <Card.Header className="bg-success text-white">
+              <FontAwesomeIcon icon={faPlay} className="me-2" />
+              Active Matches ({activeMatches.length})
+            </Card.Header>
+            <Card.Body>
+              {activeMatches.length === 0 ? (
+                <div className="text-center py-4 text-muted">
+                  <FontAwesomeIcon icon={faFire} size="3x" className="mb-3 opacity-25" />
+                  <p>No active matches at the moment</p>
+                  <small>Check back later or spectate completed matches</small>
+                </div>
+              ) : (
+                <Row>
+                  {activeMatches.map(match => (
+                    <Col md={6} key={match.id} className="mb-3">
+                      <Card className="border-success">
+                        <Card.Body>
+                          <div className="d-flex justify-content-between align-items-start mb-2">
+                            <h6 className="mb-0">{match.name}</h6>
+                            {getMatchStatusBadge(match)}
+                          </div>
+                          
+                          <div className="mb-2">
+                            <small className="text-muted">
+                              <FontAwesomeIcon icon={faUsers} className="me-1" />
+                              {match.teams?.length || 0} teams competing
+                            </small>
+                          </div>
+                          
+                          {match.duration && (
+                            <div className="mb-2">
+                              <small className="text-muted">
+                                <FontAwesomeIcon icon={faClock} className="me-1" />
+                                Duration: {formatDuration(match.duration)}
+                              </small>
+                            </div>
+                          )}
+
+                          <div className="d-grid gap-2 d-md-flex">
+                            <Button 
+                              size="sm" 
+                              variant="outline-success"
+                              onClick={() => viewMatch(match.id)}
+                              className="flex-fill"
+                            >
+                              <FontAwesomeIcon icon={faEye} className="me-1" />
+                              Spectate
+                            </Button>
+                            <Button 
+                              size="sm" 
+                              variant="outline-primary"
+                              onClick={() => navigate(`/cyberwar/match/${match.id}/scoreboard`)}
+                            >
+                              <FontAwesomeIcon icon={faChartLine} className="me-1" />
+                              Scoreboard
+                            </Button>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              )}
+            </Card.Body>
+          </Card>
+
+          {/* Upcoming/Ready Matches */}
+          <Card>
+            <Card.Header>
+              <FontAwesomeIcon icon={faClock} className="me-2" />
+              Ready to Start ({upcomingMatches.length})
+            </Card.Header>
+            <Card.Body>
+              {upcomingMatches.length === 0 ? (
+                <div className="text-center py-4 text-muted">
+                  <FontAwesomeIcon icon={faClock} size="3x" className="mb-3 opacity-25" />
+                  <p>No matches ready to start</p>
+                  <small>Matches appear here when teams are assigned</small>
+                </div>
+              ) : (
+                <Row>
+                  {upcomingMatches.map(match => (
+                    <Col md={6} key={match.id} className="mb-3">
+                      <Card className="border-warning">
+                        <Card.Body>
+                          <div className="d-flex justify-content-between align-items-start mb-2">
+                            <h6 className="mb-0">{match.name}</h6>
+                            {getMatchStatusBadge(match)}
+                          </div>
+                          
+                          <p className="small text-muted mb-2">
+                            {match.description}
+                          </p>
+                          
+                          <div className="mb-2">
+                            <small className="text-muted">
+                              <FontAwesomeIcon icon={faUsers} className="me-1" />
+                              {match.teams?.length || 0}/{match.maxTeams} teams
+                            </small>
+                          </div>
+
+                          <div className="d-grid">
+                            <Button 
+                              size="sm" 
+                              variant="warning"
+                              onClick={() => joinMatch(match.id)}
+                              disabled={userTeams.length === 0}
+                            >
+                              <FontAwesomeIcon icon={faPlay} className="me-1" />
+                              {userTeams.length === 0 ? 'Need Team' : 'Join Match'}
+                            </Button>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col lg={4}>
+          {/* User Teams */}
+          <Card className="mb-4">
+            <Card.Header>
+              <FontAwesomeIcon icon={faUsers} className="me-2" />
+              My Teams ({userTeams.length})
+            </Card.Header>
+            <Card.Body>
+              {userTeams.length === 0 ? (
+                <div className="text-center py-3">
+                  <p className="text-muted mb-3">You're not in any teams yet</p>
+                  <Button variant="outline-primary" onClick={() => setShowCreateTeam(true)}>
+                    <FontAwesomeIcon icon={faPlus} className="me-1" />
+                    Create Team
+                  </Button>
+                </div>
+              ) : (
+                <ListGroup variant="flush">
+                  {userTeams.map(team => (
+                    <ListGroup.Item key={team.id} className="px-0">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <div className="d-flex align-items-center">
+                            <div 
+                              className="rounded-circle me-2" 
+                              style={{ 
+                                width: '12px', 
+                                height: '12px', 
+                                backgroundColor: team.color 
+                              }}
+                            ></div>
+                            <strong>{team.name}</strong>
+                          </div>
+                          <small className="text-muted">
+                            {team.memberCount || team.members?.length || 0} members
+                            {team.currentPoints > 0 && (
+                              <span className="ms-2">
+                                • {team.currentPoints} pts
+                              </span>
+                            )}
+                          </small>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          variant="outline-primary"
+                          onClick={() => navigate(`/cyberwar/teams/${team.id}`)}
+                        >
+                          View
+                        </Button>
+                      </div>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+            </Card.Body>
+          </Card>
+
+          {/* Quick Stats */}
+          <Card>
+            <Card.Header>
+              <FontAwesomeIcon icon={faTrophy} className="me-2" />
+              Quick Stats
+            </Card.Header>
+            <Card.Body>
+              <div className="row text-center">
+                <div className="col-4">
+                  <div className="h4 mb-0 text-success">{activeMatches.length}</div>
+                  <small className="text-muted">Active</small>
+                </div>
+                <div className="col-4">
+                  <div className="h4 mb-0 text-warning">{upcomingMatches.length}</div>
+                  <small className="text-muted">Ready</small>
+                </div>
+                <div className="col-4">
+                  <div className="h4 mb-0 text-primary">{userTeams.length}</div>
+                  <small className="text-muted">My Teams</small>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Create Team Modal */}
+      <Modal show={showCreateTeam} onHide={() => setShowCreateTeam(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create New Team</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleCreateTeam}>
+            <Form.Group className="mb-3">
+              <Form.Label>Team Name *</Form.Label>
+              <Form.Control 
+                type="text"
+                value={newTeamData.name}
+                onChange={(e) => setNewTeamData({...newTeamData, name: e.target.value})}
+                required
+                placeholder="Enter team name"
+              />
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={newTeamData.description}
+                onChange={(e) => setNewTeamData({...newTeamData, description: e.target.value})}
+                placeholder="Describe your team's mission"
+              />
+            </Form.Group>
+            
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Team Color</Form.Label>
+                  <Form.Control 
+                    type="color"
+                    value={newTeamData.color}
+                    onChange={(e) => setNewTeamData({...newTeamData, color: e.target.value})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Max Members</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="2"
+                    max="10"
+                    value={newTeamData.maxMembers}
+                    onChange={(e) => setNewTeamData({...newTeamData, maxMembers: parseInt(e.target.value)})}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button 
+                variant="secondary" 
+                onClick={() => setShowCreateTeam(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                <FontAwesomeIcon icon={faPlus} className="me-1" />
+                Create Team
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* CSS for pulse animation */}
+      <style jsx>{`
+        .pulse-dot {
+          width: 8px;
+          height: 8px;
+          background-color: currentColor;
+          border-radius: 50%;
+          display: inline-block;
+          animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+          0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+          }
+          
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+          }
+          
+          100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+          }
+        }
+      `}</style>
+    </Container>
+  );
+};
+
+export default MatchLobby;

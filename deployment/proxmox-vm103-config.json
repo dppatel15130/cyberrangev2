@@ -1,0 +1,79 @@
+{
+  "deployment_info": {
+    "target_host": "VM 103 (dhruv-main)",
+    "host_ip": "172.16.200.136",
+    "deployment_type": "cyberrange_production_host",
+    "created": "2025-01-14",
+    "version": "Phase 2 - Competition Platform"
+  },
+  "proxmox_environment": {
+    "datacenter": "Datacenter", 
+    "main_host": {
+      "vm_id": 103,
+      "name": "dhruv-main",
+      "ip_address": "172.16.200.136",
+      "role": "cyberrange_production_host",
+      "services": {
+        "existing": [
+          "cyberrange-frontend",
+          "cyberrange-backend",
+          "mysql-database"
+        ],
+        "new_phase2": [
+          "websocket-server",
+          "game-engine", 
+          "scoring-service",
+          "packet-analyzer"
+        ]
+      },
+      "ports": {
+        "frontend": 3000,
+        "backend": 5000,
+        "websocket": 5000,
+        "mysql": 3306
+      }
+    },
+    "network_topology": {
+      "host_network": "172.16.200.0/24",
+      "host_ip": "172.16.200.136",
+      "competition_networks": {
+        "team_segments": "172.16.201.0/24 - 172.16.210.0/24",
+        "isolation_method": "iptables_rules"
+      },
+      "bridge_interface": "vmbr0"
+    }
+  },
+  "available_vms_for_competition": {
+    "kali_vms": [
+      {"vm_id": 101, "current_ip": "172.16.26.128", "role": "team_attacker"},
+      {"vm_id": 104, "current_ip": "172.16.26.133", "role": "team_attacker"},
+      {"vm_id": 105, "current_ip": "172.16.26.120", "role": "team_attacker"},
+      {"vm_id": 106, "current_ip": "172.16.26.121", "role": "team_attacker"},
+      {"vm_id": 107, "current_ip": "172.16.26.117", "role": "team_attacker"},
+      {"vm_id": 108, "current_ip": "172.16.26.137", "role": "team_attacker"},
+      {"vm_id": 109, "current_ip": "172.16.26.124", "role": "team_attacker"},
+      {"vm_id": 110, "current_ip": "172.16.26.114", "role": "team_attacker"}
+    ],
+    "windows_vms": [
+      {"vm_id": 102, "current_ip": "172.16.26.128", "role": "team_target"}
+    ],
+    "localhost_network": {
+      "name": "localhost (satyam)",
+      "ip": "172.16.200.136",
+      "role": "cyberrange_host"
+    }
+  },
+  "storage_configuration": {
+    "primary": "local-lvm (satyam)",
+    "backup": "local (satyam)", 
+    "data": "Data (satyam)",
+    "pcap_storage": "/opt/cyberrange/pcap-data",
+    "logs_storage": "/var/log/cyberrange"
+  },
+  "deployment_directories": {
+    "code_location": "/home/user/cyberrangev1-main",
+    "backend_path": "/home/user/cyberrangev1-main/backend",
+    "frontend_path": "/home/user/cyberrangev1-main/frontend",
+    "deployment_scripts": "/opt/cyberrange/scripts"
+  }
+}

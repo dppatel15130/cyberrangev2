@@ -1,0 +1,190 @@
+---
+- name: Deploy CyberRange Monitoring Infrastructure
+  hosts: proxmox_host
+  become: yes
+  vars:
+    cyberrange_subnet: "172.16.200.0/24"
+    logstash_vm_id: 137
+    logstash_ip: "172.16.200.137"
+    grafana_ip: "172.16.200.138"
+    docker_compose_version: "2.21.0"
+
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - docker.io
+          - docker-compose-plugin
+          - bridge-utils
+          - tcpdump
+          - net-tools
+          - curl
+          - jq
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Create cyberrange directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - /opt/cyberrange
+        - /opt/cyberrange/infrastructure
+        - /opt/cyberrange/logs
+        - /opt/cyberrange/pcap-data
+        - /var/log/cyberrange
+
+    - name: Copy monitoring configuration files
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: '0644'
+      loop:
+        - { src: "../docker-compose.monitoring.yml", dest: "/opt/cyberrange/docker-compose.yml" }
+        - { src: "../logstash/", dest: "/opt/cyberrange/logstash/" }
+        - { src: "../grafana/", dest: "/opt/cyberrange/grafana/" }
+
+    - name: Create Logstash configuration
+      copy:
+        content: |
+          input.main:
+            xpack.monitoring.elasticsearch.hosts: ["http://172.16.200.136:9200"]
+        dest: /opt/cyberrange/logstash/config/logstash.yml
+        mode: '0644'
+
+    - name: Create Filebeat configuration
+      copy:
+        content: |
+          filebeat.inputs:
+          - type: log
+            enabled: true
+            paths:
+              - /var/log/cyberrange/*.log
+              - /var/log/*.log
+            fields:
+              log_type: system
+          - type: docker
+            containers.ids:
+              - "*"
+            fields:
+              log_type: container
+
+          output.logstash:
+            hosts: ["172.16.200.137:5044"]
+
+          processors:
+          - add_host_metadata:
+              when.not.contains.tags: forwarded
+          - add_docker_metadata: ~
+        dest: /opt/cyberrange/filebeat/filebeat.yml
+        mode: '0644'
+
+    - name: Configure network bridge mirroring
+      shell: |
+        # Create TAP interface for packet mirroring
+        if ! ip link show tap-mirror >/dev/null 2>&1; then
+          ip tuntap add mode tap tap-mirror
+          ip link set tap-mirror up
+          ip link set tap-mirror master vmbr0
+          echo "TAP interface created and attached to vmbr0"
+        fi
+      register: tap_result
+      changed_when: "'created' in tap_result.stdout"
+
+    - name: Start monitoring services
+      shell: |
+        cd /opt/cyberrange
+        docker compose up -d
+      register: compose_result
+
+    - name: Wait for services to be ready
+      wait_for:
+        host: "{{ item.host }}"
+        port: "{{ item.port }}"
+        delay: 10
+        timeout: 120
+      loop:
+        - { host: "172.16.200.137", port: 5044 }  # Logstash
+        - { host: "172.16.200.138", port: 3000 }  # Grafana
+        - { host: "172.16.200.140", port: 6379 }  # Redis
+
+    - name: Configure Grafana admin settings
+      uri:
+        url: "http://172.16.200.138:3000/api/admin/settings"
+        method: PUT
+        user: admin
+        password: cyberrange2024
+        force_basic_auth: yes
+        body_format: json
+        body:
+          theme: "dark"
+          homeDashboardId: 0
+        headers:
+          Content-Type: "application/json"
+      ignore_errors: yes
+
+    - name: Test Elasticsearch connectivity
+      uri:
+        url: "http://172.16.200.136:9200/_cluster/health"
+        method: GET
+      register: es_health
+      until: es_health.json.status == "yellow" or es_health.json.status == "green"
+      retries: 5
+      delay: 10
+
+    - name: Create Elasticsearch index templates
+      uri:
+        url: "http://172.16.200.136:9200/_index_template/cyberrange-logs"
+        method: PUT
+        body_format: json
+        body:
+          index_patterns: ["cyberrange-logs-*"]
+          template:
+            settings:
+              number_of_shards: 1
+              number_of_replicas: 0
+              index.refresh_interval: "5s"
+            mappings:
+              properties:
+                "@timestamp":
+                  type: date
+                message:
+                  type: text
+                  analyzer: standard
+                security_event:
+                  type: keyword
+                threat_level:
+                  type: keyword
+                match_points:
+                  type: integer
+                team_id:
+                  type: keyword
+                src_ip:
+                  type: ip
+                dst_ip:
+                  type: ip
+
+    - name: Verify monitoring deployment
+      debug:
+        msg: |
+          Monitoring infrastructure deployed successfully!
+          - Logstash: http://172.16.200.137:9600
+          - Grafana: http://172.16.200.138:3000 (admin/cyberrange2024)
+          - Redis: 172.16.200.140:6379
+          - Packet capture: /opt/cyberrange/pcap-data/
+
+    - name: Display next steps
+      debug:
+        msg: |
+          Next steps:
+          1. Configure Proxmox firewall rules: bash /opt/cyberrange/proxmox-network-config.sh
+          2. Import Grafana dashboards
+          3. Test packet capture on tap-mirror interface
+          4. Verify ELK integration

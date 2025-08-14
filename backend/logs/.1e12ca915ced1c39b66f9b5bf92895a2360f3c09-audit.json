@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/kali/Downloads/maincyberv2-main/backend/logs/.1e12ca915ced1c39b66f9b5bf92895a2360f3c09-audit.json",
+    "files": [
+        {
+            "date": 1754451333306,
+            "name": "/home/kali/Downloads/maincyberv2-main/backend/logs/security-2025-08-06.log",
+            "hash": "8453dfbb606b5d1b5f24fdf12c65f34d15c82a213795ded01a3933e1ab182648"
+        },
+        {
+            "date": 1754540665189,
+            "name": "/home/kali/Downloads/maincyberv2-main/backend/logs/security-2025-08-07.log",
+            "hash": "f29685949becfeddf3ba6367890b6648dab8e91362980a516db2939f3d0ab8d9"
+        },
+        {
+            "date": 1754623920758,
+            "name": "/home/kali/Downloads/maincyberv2-main/backend/logs/security-2025-08-08.log",
+            "hash": "cb9c447d884e5f839d760e92baefcb7168e558604c539d5b0d1d5798fd82b4a0"
+        },
+        {
+            "date": 1754885037642,
+            "name": "/home/kali/Downloads/maincyberv2-main/backend/logs/security-2025-08-11.log",
+            "hash": "773ebcc48aeef5b7edf521e409de79e89f1ee02673027493b76fb63604ab05ff"
+        }
+    ],
+    "hashType": "sha256"
+}

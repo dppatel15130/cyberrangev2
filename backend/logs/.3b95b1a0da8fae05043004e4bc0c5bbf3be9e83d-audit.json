@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/kali/Downloads/cyberrangev1-main/backend/logs/.3b95b1a0da8fae05043004e4bc0c5bbf3be9e83d-audit.json",
+    "files": [
+        {
+            "date": 1755162416993,
+            "name": "/home/kali/Downloads/cyberrangev1-main/backend/logs/security-2025-08-14.log",
+            "hash": "a2491087e9bbfa4a7a19ef1c0938d1ec333b4a915c591b5da768297442f4664e"
+        }
+    ],
+    "hashType": "sha256"
+}

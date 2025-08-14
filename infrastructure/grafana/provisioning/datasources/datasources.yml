@@ -1,0 +1,67 @@
+apiVersion: 1
+
+datasources:
+  # Elasticsearch datasource for log analytics
+  - name: Elasticsearch-CyberRange
+    type: elasticsearch
+    access: proxy
+    url: http://172.16.200.136:9200
+    database: "cyberrange-logs-*"
+    basicAuth: false
+    isDefault: true
+    jsonData:
+      interval: "Daily"
+      timeField: "@timestamp"
+      esVersion: 8
+      maxConcurrentShardRequests: 5
+      logMessageField: "message"
+      logLevelField: "level"
+
+  # Elasticsearch datasource for security events
+  - name: Elasticsearch-Security
+    type: elasticsearch
+    access: proxy
+    url: http://172.16.200.136:9200
+    database: "cyberrange-security-*"
+    basicAuth: false
+    jsonData:
+      interval: "Daily"
+      timeField: "@timestamp"
+      esVersion: 8
+      maxConcurrentShardRequests: 5
+
+  # Elasticsearch datasource for scoring
+  - name: Elasticsearch-Scoring
+    type: elasticsearch
+    access: proxy
+    url: http://172.16.200.136:9200
+    database: "cyberrange-scoring-*"
+    basicAuth: false
+    jsonData:
+      interval: "Daily"
+      timeField: "@timestamp"
+      esVersion: 8
+      maxConcurrentShardRequests: 5
+
+  # Redis datasource for real-time data
+  - name: Redis-CyberRange
+    type: redis-datasource
+    access: proxy
+    url: redis://172.16.200.140:6379
+    jsonData:
+      client: standalone
+      poolSize: 5
+      timeout: 10
+      pingInterval: 0
+      pipelineWindow: 0
+    secureJsonData:
+      password: cyberrange2024
+
+  # MySQL datasource for application data
+  - name: MySQL-CyberRange
+    type: mysql
+    url: localhost:3306
+    database: cyberrangev2
+    user: root
+    secureJsonData:
+      password: kali

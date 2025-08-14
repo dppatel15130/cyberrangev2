@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  # Logstash sensor for network traffic analysis
+  logstash-sensor:
+    image: docker.elastic.co/logstash/logstash:8.11.0
+    container_name: cyberrange-logstash
+    hostname: logstash-sensor
+    environment:
+      - "LS_JAVA_OPTS=-Xmx512m -Xms512m"
+      - "ELASTICSEARCH_HOSTS=http://172.16.200.136:9200"
+    volumes:
+      - ./logstash/config:/usr/share/logstash/config:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/patterns:/usr/share/logstash/patterns:ro
+      - logstash-data:/usr/share/logstash/data
+      - /var/log/cyberrange:/var/log/cyberrange:rw
+    ports:
+      - "5044:5044"  # Beats input
+      - "5000:5000/tcp"  # TCP input
+      - "5000:5000/udp"  # UDP input
+      - "9600:9600"  # Logstash monitoring
+    networks:
+      cyberrange:
+        ipv4_address: 172.16.200.137
+    restart: unless-stopped
+    depends_on:
+      - packet-capture
+
+  # Packet capture service using tcpdump
+  packet-capture:
+    image: nicolaka/netshoot:v0.11
+    container_name: cyberrange-pcap
+    hostname: packet-capture
+    privileged: true
+    network_mode: host
+    volumes:
+      - ./pcap-data:/pcap:rw
+      - ./scripts:/scripts:ro
+    command: >
+      sh -c "
+        echo 'Starting packet capture on tap-mirror interface...';
+        tcpdump -i tap-mirror -w /pcap/cyberrange-$(date +%Y%m%d-%H%M%S).pcap -G 3600 -W 24 -Z root;
+      "
+    restart: unless-stopped
+
+  # Grafana for monitoring and visualization
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: cyberrange-grafana
+    hostname: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=cyberrange2024
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_USERS_ALLOW_ORG_CREATE=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel,grafana-clock-panel
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=CyberRange
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "3000:3000"
+    networks:
+      cyberrange:
+        ipv4_address: 172.16.200.138
+    restart: unless-stopped
+
+  # Filebeat for log forwarding
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.11.0
+    container_name: cyberrange-filebeat
+    hostname: filebeat
+    user: root
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/log:/host-logs:ro
+      - filebeat-data:/usr/share/filebeat/data
+    networks:
+      cyberrange:
+        ipv4_address: 172.16.200.139
+    depends_on:
+      - logstash-sensor
+    restart: unless-stopped
+
+  # Redis for caching and real-time data
+  redis:
+    image: redis:7.2-alpine
+    container_name: cyberrange-redis
+    hostname: redis
+    command: redis-server --appendonly yes --requirepass cyberrange2024
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      cyberrange:
+        ipv4_address: 172.16.200.140
+    restart: unless-stopped
+
+volumes:
+  logstash-data:
+    driver: local
+  grafana-data:
+    driver: local
+  filebeat-data:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  cyberrange:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.200.0/24
+          gateway: 172.16.200.1
