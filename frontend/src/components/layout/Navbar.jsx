@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar as BootstrapNavbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +28,27 @@ const Navbar = () => {
   const handleNavigation = (path) => {
     navigate(path);
   };
+
+  // Ensure Bootstrap dropdowns are initialized
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Initialize all dropdown toggles after a short delay
+      const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+      dropdownElementList.forEach((dropdownToggleEl) => {
+        if (window.bootstrap && window.bootstrap.Dropdown) {
+          // Dispose any existing dropdown instance
+          const existingDropdown = window.bootstrap.Dropdown.getInstance(dropdownToggleEl);
+          if (existingDropdown) {
+            existingDropdown.dispose();
+          }
+          // Create new dropdown instance
+          new window.bootstrap.Dropdown(dropdownToggleEl);
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [user]); // Re-run when user changes (login/logout)
 
   return (
     <BootstrapNavbar variant="dark" expand="lg" className="mb-4">
@@ -93,7 +114,8 @@ const Navbar = () => {
                       Cyber-Warfare
                     </span>
                   } 
-                  id="cyberwar-dropdown"
+                  id="cyberwar-nav-dropdown"
+                  key="cyberwar-dropdown"
                 >
                   <NavDropdown.Item onClick={() => handleNavigation('/cyberwar/lobby')}>
                     <FontAwesomeIcon icon={faUsers} className="me-2" />

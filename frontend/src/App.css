@@ -662,6 +662,30 @@ input, select, textarea {
   background: var(--bg-elevated) !important;
   border: 1px solid var(--border-primary) !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  z-index: 9999 !important;
+  position: absolute !important;
+}
+
+/* Ensure navbar has high z-index */
+.navbar {
+  z-index: 1030 !important;
+}
+
+/* Fix for navbar dropdowns specifically */
+.navbar .dropdown-menu {
+  z-index: 1040 !important;
+}
+
+/* Fix for Bootstrap NavDropdown toggle */
+.navbar-nav .dropdown-toggle::after {
+  display: inline-block !important;
+  margin-left: 0.255em !important;
+  vertical-align: 0.255em !important;
+  content: "" !important;
+  border-top: 0.3em solid !important;
+  border-right: 0.3em solid transparent !important;
+  border-bottom: 0 !important;
+  border-left: 0.3em solid transparent !important;
 }
 
 .dropdown-item {
