@@ -64,10 +64,19 @@ const Scoreboard = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
   // WebSocket for real-time updates
-  const wsUrl = `ws://localhost:5000/ws/scoreboard/${matchId}`;
+  const wsUrl = `ws://localhost:5000/ws/scoring`;
   const { lastMessage, isConnected } = useWebSocket(wsUrl, {
     onMessage: (data) => {
       handleWebSocketMessage(data);
+    },
+    onOpen: (socket) => {
+      // Subscribe to match updates after connection is established
+      if (socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({
+          type: 'subscribe_match',
+          matchId: matchId
+        }));
+      }
     }
   });
 
@@ -90,10 +99,10 @@ const Scoreboard = () => {
     try {
       setLoading(true);
       const [matchRes, scoreRes, flagsRes, timelineRes] = await Promise.all([
-        cyberwarService.getMatch(matchId),
+        cyberwarService.getMatchById(matchId),
         cyberwarService.getMatchScoreboard(matchId),
         cyberwarService.getMatchFlags(matchId),
-        cyberwarService.getMatchTimeline(matchId)
+        cyberwarService.getMatchEvents(matchId) // Updated from getMatchTimeline to getMatchEvents
       ]);
       
       setMatch(matchRes);

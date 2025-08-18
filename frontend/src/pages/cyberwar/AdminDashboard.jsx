@@ -50,7 +50,7 @@ import { AuthContext } from '../../context/AuthContext';
 import cyberwarService from '../../services/cyberwarService';
 
 const AdminDashboard = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading: authLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   
   // State management
@@ -64,6 +64,23 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
   
+  // Show loading state while auth is being checked
+  if (authLoading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+  
+  // Redirect to login if not authenticated (only after auth has loaded)
+  if (!user) {
+    navigate('/login', { state: { from: '/cyberwar/admin' }, replace: true });
+    return null;
+  }
+  
   // Modals
   const [showCreateMatch, setShowCreateMatch] = useState(false);
   const [showCreateFlag, setShowCreateFlag] = useState(false);
@@ -74,8 +91,8 @@ const AdminDashboard = () => {
   const [newMatch, setNewMatch] = useState({
     name: '',
     description: '',
-    duration: 120,
-    maxTeams: 10,
+    duration: 300, // Changed from 120 to 300 (5 minutes minimum)
+    maxTeams: 4,   // Changed from 10 to 4 (max 8, using a safer default)
     flagIds: [],
     vmIds: []
   });
@@ -91,15 +108,36 @@ const AdminDashboard = () => {
   
   const [selectedVM, setSelectedVM] = useState(null);
 
-  useEffect(() => {
-    // Check admin permissions
-    if (!user?.isAdmin) {
-      navigate('/dashboard');
-      return;
-    }
-    
-    fetchDashboardData();
-  }, [user, navigate]);
+// Replace this section in your AdminDashboard.jsx
+
+useEffect(() => {
+  // Check admin permissions
+  if (!user) {
+    // If user is not logged in, redirect to login
+    navigate('/login', { state: { from: '/cyberwar/admin' } });
+    return;
+  }
+
+  // Check if user has admin or cyberwar admin role
+  // Fix: Check user.role instead of user.isAdmin
+  const hasAdminAccess = user.role === 'admin' || user.role === 'cyberwar_admin';
+  
+  if (!hasAdminAccess) {
+    // If user doesn't have required permissions, redirect to dashboard with error message
+    navigate('/dashboard', { 
+      state: { 
+        error: 'You do not have permission to access the Cyberwar Admin Dashboard' 
+      } 
+    });
+    return;
+  }
+  
+  // If we get here, user has permission - fetch dashboard data
+  fetchDashboardData();
+}, [user, navigate]);
+
+// Also fix this condition at the bottom:
+
 
   const fetchDashboardData = async () => {
     try {
@@ -272,7 +310,7 @@ const AdminDashboard = () => {
     );
   }
 
-  if (!user?.isAdmin) {
+  if (!user || (user.role !== 'admin' && user.role !== 'cyberwar_admin')) {
     return (
       <Container className="py-5 text-center">
         <Alert variant="danger">

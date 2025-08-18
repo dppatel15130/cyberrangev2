@@ -32,6 +32,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.3",
     "sequelize": "^6.37.7",
+    "umzug": "^3.8.2",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
     "ws": "^8.18.3"

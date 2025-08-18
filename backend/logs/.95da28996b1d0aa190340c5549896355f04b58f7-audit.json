@@ -9,6 +9,11 @@
             "date": 1755162416964,
             "name": "/home/kali/Downloads/cyberrangev1-main/backend/logs/application-2025-08-14.log",
             "hash": "6fc905e60e4a3817d6f2c2d3a2e939fe8cb591b5780b030ec904ae0c858cacd5"
+        },
+        {
+            "date": 1755490515256,
+            "name": "/home/kali/Downloads/cyberrangev1-main/backend/logs/application-2025-08-18.log",
+            "hash": "7f89f5e2aa4decc658a0dc694b0f243ed3c31ec3fff05b3b7cd5d31a29eb08f2"
         }
     ],
     "hashType": "sha256"

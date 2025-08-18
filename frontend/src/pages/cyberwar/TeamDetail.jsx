@@ -20,6 +20,7 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
+  faUser, 
   faUsers, 
   faUserPlus,
   faUserMinus,
@@ -27,6 +28,15 @@ import {
   faEnvelope,
   faHistory,
   faTrophy,
+  faFlag,
+  faCalendarAlt,
+  faClock,
+  faSearch,
+  faFilter,
+  faSort,
+  faSortUp,
+  faSortDown,
+  faPlus,
   faEdit,
   faTrash,
   faCog,
@@ -81,7 +91,7 @@ const TeamDetail = () => {
     try {
       setLoading(true);
       const [teamRes, statsRes, historyRes] = await Promise.all([
-        cyberwarService.getTeam(teamId),
+        cyberwarService.getTeamById(teamId),
         cyberwarService.getTeamStats(teamId),
         cyberwarService.getTeamMatches(teamId)
       ]);

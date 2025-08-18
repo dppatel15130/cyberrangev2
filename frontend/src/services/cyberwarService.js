@@ -6,6 +6,23 @@ import axios from '../utils/axiosConfig';
  */
 class CyberWarService {
   
+  // ===== ADMIN OPERATIONS =====
+  
+  /**
+   * Perform admin action on user (activate/deactivate/delete)
+   * @param {string} userId - ID of the user to perform action on
+   * @param {string} action - Action to perform ('activate', 'deactivate', 'delete')
+   */
+  async adminUserAction(userId, action) {
+    try {
+      const response = await axios.post(`/admin/cyberwar/users/${userId}/${action}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to ${action} user:`, error);
+      throw error.response?.data || { error: `Failed to ${action} user` };
+    }
+  }
+
   // ===== TEAM OPERATIONS =====
   
   /**
@@ -17,7 +34,7 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error('Failed to fetch teams:', error);
-      throw error;
+      throw error.response?.data || { error: 'Failed to fetch teams' };
     }
   }
 
@@ -36,6 +53,8 @@ class CyberWarService {
 
   /**
    * Create a new team
+   * @param {Object} teamData - Team data including name and optional description
+   * @returns {Promise<Object>} Created team data
    */
   async createTeam(teamData) {
     try {
@@ -43,25 +62,30 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error('Failed to create team:', error);
-      throw error;
+      throw error.response?.data || { error: 'Failed to create team' };
     }
   }
 
   /**
    * Join a team
+   * @param {string|number} teamId - ID of the team to join
+   * @param {string} [inviteCode] - Optional invite code for private teams
+   * @returns {Promise<Object>} Updated team membership data
    */
-  async joinTeam(teamId) {
+  async joinTeam(teamId, inviteCode) {
     try {
-      const response = await axios.post(`/teams/${teamId}/join`);
+      const response = await axios.post(`/teams/${teamId}/join`, { inviteCode });
       return response.data;
     } catch (error) {
       console.error(`Failed to join team ${teamId}:`, error);
-      throw error;
+      throw error.response?.data || { error: 'Failed to join team' };
     }
   }
 
   /**
    * Leave a team
+   * @param {string|number} teamId - ID of the team to leave
+   * @returns {Promise<Object>} Result of the leave operation
    */
   async leaveTeam(teamId) {
     try {
@@ -69,7 +93,70 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error(`Failed to leave team ${teamId}:`, error);
-      throw error;
+      throw error.response?.data || { error: 'Failed to leave team' };
+    }
+  }
+
+  /**
+   * Transfer team ownership to another member
+   * @param {string|number} teamId - ID of the team
+   * @param {string|number} newOwnerId - ID of the new owner
+   * @returns {Promise<Object>} Updated team data
+   */
+  async transferOwnership(teamId, newOwnerId) {
+    try {
+      const response = await axios.post(`/teams/${teamId}/transfer-ownership`, { newOwnerId });
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to transfer ownership of team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to transfer ownership' };
+    }
+  }
+
+  /**
+   * Update team information
+   * @param {string|number} teamId - ID of the team to update
+   * @param {Object} updates - Team fields to update
+   * @returns {Promise<Object>} Updated team data
+   */
+  async updateTeam(teamId, updates) {
+    try {
+      const response = await axios.put(`/teams/${teamId}`, updates);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to update team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to update team' };
+    }
+  }
+
+  /**
+   * Remove a member from the team
+   * @param {string|number} teamId - ID of the team
+   * @param {string|number} userId - ID of the user to remove
+   * @returns {Promise<Object>} Result of the removal
+   */
+  async removeTeamMember(teamId, userId) {
+    try {
+      const response = await axios.delete(`/teams/${teamId}/members/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to remove member ${userId} from team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to remove team member' };
+    }
+  }
+
+  /**
+   * Generate a new invite code for the team
+   * @param {string|number} teamId - ID of the team
+   * @returns {Promise<Object>} New invite code and expiration
+   */
+  async generateInviteCode(teamId) {
+    try {
+      const response = await axios.post(`/teams/${teamId}/invite-code`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to generate invite code for team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to generate invite code' };
     }
   }
 
@@ -85,6 +172,22 @@ class CyberWarService {
     } catch (error) {
       console.error(`Failed to fetch team stats for ${teamId}:`, error);
       throw error;
+    }
+  }
+
+  /**
+   * Get match history for a specific team
+   * @param {string|number} teamId - ID of the team
+   * @param {Object} [params] - Optional query parameters (page, limit, etc.)
+   * @returns {Promise<Object>} Team's match history
+   */
+  async getTeamMatches(teamId, params = {}) {
+    try {
+      const response = await axios.get(`/teams/${teamId}/matches`, { params });
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to fetch matches for team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to fetch team matches' };
     }
   }
 
@@ -125,16 +228,51 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error(`Failed to fetch match ${matchId}:`, error);
-      throw error;
+      throw error.response?.data || { error: `Failed to fetch match ${matchId}` };
     }
   }
 
   /**
    * Create a new match (admin only)
+   * @param {Object} matchData - Match data including name, description, duration, etc.
+   * @returns {Promise<Object>} Created match data
    */
   async createMatch(matchData) {
     try {
-      const response = await axios.post('/matches', matchData);
+      // Transform the frontend match data to match the backend's expected format
+      const formattedMatchData = {
+        name: matchData.name,
+        description: matchData.description || '',
+        matchType: matchData.matchType || 'attack_defend',
+        duration: (matchData.duration || 120) * 60, // Convert minutes to seconds
+        maxTeams: matchData.maxTeams || 4,
+        autoScoring: true,
+        packetCaptureEnabled: true,
+        logAnalysisEnabled: false,
+        elkIntegration: false,
+        networkConfig: null,
+        vmConfig: null, // Let backend handle VM configuration
+        scoringRules: {
+          flagCapture: 100,
+          serviceUp: 10,
+          serviceDown: -5,
+          firstBlood: 50,
+          slaViolation: -20
+        },
+        flags: [] // Let backend handle flag generation
+      };
+
+      console.log('Sending match creation request:', formattedMatchData);
+      const response = await axios.post('/matches', formattedMatchData, {
+        validateStatus: (status) => status < 500 // Don't throw on 4xx errors
+      });
+      
+      if (response.status >= 400) {
+        console.error('Failed to create match:', response.data);
+        throw response.data.error || { message: 'Failed to create match' };
+      }
+      
+      console.log('Match created successfully:', response.data);
       return response.data;
     } catch (error) {
       console.error('Failed to create match:', error);
@@ -231,6 +369,60 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error('Failed to fetch leaderboard:', error);
+      throw error;
+    }
+  }
+
+  // ===== ADMIN OPERATIONS =====
+
+  /**
+   * Get admin dashboard statistics
+   */
+  async getAdminStats() {
+    try {
+      const response = await axios.get('/admin/cyberwar/stats');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch admin stats:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all users for admin
+   */
+  async getAdminUsers() {
+    try {
+      const response = await axios.get('/admin/cyberwar/users');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch admin users:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all flags for admin
+   */
+  async getAdminFlags() {
+    try {
+      const response = await axios.get('/admin/cyberwar/flags');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch admin flags:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all VMs for admin
+   */
+  async getAdminVMs() {
+    try {
+      const response = await axios.get('/admin/cyberwar/vms');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch admin VMs:', error);
       throw error;
     }
   }

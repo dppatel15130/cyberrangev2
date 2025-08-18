@@ -29,7 +29,10 @@ import TeamDetail from './pages/cyberwar/TeamDetail';
 import MatchView from './pages/cyberwar/MatchView';
 import Scoreboard from './pages/cyberwar/Scoreboard';
 import CyberwarAdminDashboard from './pages/cyberwar/AdminDashboard';
-import TestPage from './pages/cyberwar/TestPage';
+import Teams from './pages/cyberwar/Teams';
+import NewTeam from './pages/cyberwar/NewTeam';
+import Leaderboard from './pages/cyberwar/Leaderboard';
+import Analytics from './pages/cyberwar/Analytics';
 
 // Context
 import { AuthProvider } from './context/AuthContext';
@@ -169,26 +172,32 @@ function App() {
               {/* Additional Cyber-Warfare Routes */}
               <Route path="/cyberwar/teams" element={
                 <PrivateRoute>
-                  <MatchLobby />
+                  <Teams />
+                </PrivateRoute>
+              } />
+              
+              <Route path="/cyberwar/teams/new" element={
+                <PrivateRoute>
+                  <NewTeam />
                 </PrivateRoute>
               } />
               
               <Route path="/cyberwar/leaderboard" element={
                 <PrivateRoute>
-                  <MatchLobby />
+                  <Leaderboard />
                 </PrivateRoute>
               } />
               
               <Route path="/cyberwar/analytics" element={
                 <PrivateRoute>
-                  <MatchLobby />
+                  <Analytics />
                 </PrivateRoute>
               } />
               
               {/* Cyber-Warfare Admin Routes */}
               <Route path="/cyberwar/admin" element={
                 <AdminRoute>
-                  <TestPage />
+                  <CyberwarAdminDashboard />
                 </AdminRoute>
               } />
 

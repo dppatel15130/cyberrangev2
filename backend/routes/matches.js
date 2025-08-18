@@ -152,13 +152,50 @@ router.get('/:id', authenticateToken, async (req, res) => {
 // Create new match (admin only)
 router.post('/', authenticateToken, requireAdmin, async (req, res) => {
   try {
+    console.log('Received match creation request:', JSON.stringify(req.body, null, 2));
+    
     const {
       name,
       description,
       matchType,
       duration,
       maxTeams,
-      teamsPerMatch,
+      autoScoring = true,
+      packetCaptureEnabled = true,
+      logAnalysisEnabled = false,
+      elkIntegration = false,
+      networkConfig = null,
+      vmConfig = null,
+      scoringRules = null,
+      flags = []
+    } = req.body;
+
+    // Validate required fields
+    if (!name || !matchType) {
+      console.error('Validation failed: Missing required fields', { name, matchType });
+      return res.status(400).json({ 
+        error: 'Match name and type are required',
+        details: { name: !!name, matchType: !!matchType }
+      });
+    }
+
+    // Validate match type
+    const validMatchTypes = ['attack_defend', 'capture_flag', 'red_vs_blue', 'free_for_all'];
+    if (!validMatchTypes.includes(matchType)) {
+      console.error('Validation failed: Invalid match type', { matchType });
+      return res.status(400).json({ 
+        error: 'Invalid match type',
+        validTypes: validMatchTypes
+      });
+    }
+
+    // Prepare match data
+    const matchData = {
+      name: name.trim(),
+      description: (description || '').trim(),
+      matchType,
+      duration: duration ? parseInt(duration, 10) : 7200, // Default to 2 hours in seconds
+      maxTeams: maxTeams ? parseInt(maxTeams, 10) : 4,
       autoScoring,
       packetCaptureEnabled,
       logAnalysisEnabled,
@@ -167,34 +204,38 @@ router.post('/', authenticateToken, requireAdmin, async (req, res) => {
       vmConfig,
       scoringRules,
       flags
-    } = req.body;
+    };
 
-    // Validate required fields
-    if (!name || !matchType) {
-      return res.status(400).json({ error: 'Match name and type are required' });
-    }
-
-    const match = await gameEngine.createMatch({
-      name,
-      description,
-      matchType,
-      duration: duration || null,
-      maxTeams: maxTeams || 8,
-      teamsPerMatch: teamsPerMatch || 2,
-      autoScoring: autoScoring !== false,
-      packetCaptureEnabled: packetCaptureEnabled !== false,
-      logAnalysisEnabled: logAnalysisEnabled !== false,
-      elkIntegration: elkIntegration || false,
-      networkConfig: networkConfig || null,
-      vmConfig: vmConfig || null,
-      scoringRules: scoringRules || null,
-      flags: flags || []
-    }, req.user.id);
-
+    console.log('Creating match with data:', JSON.stringify(matchData, null, 2));
+    
+    const match = await gameEngine.createMatch(matchData, req.user.id);
+    
+    console.log('Successfully created match:', match.id);
     res.status(201).json(match);
   } catch (error) {
-    console.error('Error creating match:', error);
-    res.status(500).json({ error: 'Failed to create match' });
+    console.error('Error in match creation:', {
+      error: error.message,
+      stack: error.stack,
+      requestBody: req.body
+    });
+    
+    // Handle specific error types
+    if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError') {
+      const errors = error.errors.map(err => ({
+        field: err.path,
+        message: err.message,
+        value: err.value
+      }));
+      return res.status(400).json({ 
+        error: 'Validation error',
+        details: errors 
+      });
+    }
+    
+    res.status(500).json({ 
+      error: 'Failed to create match',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 

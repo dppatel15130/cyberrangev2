@@ -29,7 +29,7 @@ router.get('/', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         },
         {
           model: Match,
@@ -127,8 +127,8 @@ router.get('/:id', authenticateToken, async (req, res) => {
         {
           model: User,
           as: 'members',
-          attributes: ['id', 'username', 'email', 'role', 'lastLogin'],
-          through: { attributes: ['joinedAt'] }
+          attributes: ['id', 'username', 'email', 'role'],
+          through: { attributes: [] } // Remove joinedAt reference
         },
         {
           model: Match,
@@ -227,13 +227,8 @@ router.post('/', authenticateToken, async (req, res) => {
       isActive: true
     });
 
-    // Add creator as team captain
-    await team.addMember(req.user.id, { 
-      through: { 
-        joinedAt: new Date(),
-        role: 'captain' 
-      } 
-    });
+    // Add creator as team captain - simplified without joinedAt
+    await team.addMember(req.user.id);
 
     const teamWithMembers = await Team.findByPk(team.id, {
       include: [
@@ -241,7 +236,7 @@ router.post('/', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         }
       ]
     });
@@ -306,7 +301,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         }
       ]
     });
@@ -370,13 +365,8 @@ router.post('/:id/join', authenticateToken, async (req, res) => {
       });
     }
 
-    // Add user to team
-    await team.addMember(req.user.id, {
-      through: {
-        joinedAt: new Date(),
-        role: 'member'
-      }
-    });
+    // Add user to team - simplified without joinedAt
+    await team.addMember(req.user.id);
 
     const updatedTeam = await Team.findByPk(req.params.id, {
       include: [
@@ -384,7 +374,7 @@ router.post('/:id/join', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         }
       ]
     });
@@ -506,13 +496,8 @@ router.post('/:id/members', authenticateToken, async (req, res) => {
       return res.status(400).json({ error: 'Team is at maximum capacity' });
     }
 
-    // Add user to team
-    await team.addMember(userId, {
-      through: {
-        joinedAt: new Date(),
-        role: 'member'
-      }
-    });
+    // Add user to team - simplified without joinedAt
+    await team.addMember(userId);
 
     const updatedTeam = await Team.findByPk(req.params.id, {
       include: [
@@ -520,7 +505,7 @@ router.post('/:id/members', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         }
       ]
     });
@@ -603,7 +588,7 @@ router.delete('/:id/members/:userId', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: ['joinedAt'] }
+          through: { attributes: [] } // Remove joinedAt reference
         }
       ]
     });
@@ -615,6 +600,56 @@ router.delete('/:id/members/:userId', authenticateToken, async (req, res) => {
   } catch (error) {
     console.error('Error removing team member:', error);
     res.status(500).json({ error: 'Failed to remove team member' });
+  }
+});
+
+// Get all matches for a specific team
+router.get('/:id/matches', authenticateToken, async (req, res) => {
+  try {
+    const { page = 1, limit = 20, status } = req.query;
+    const offset = (page - 1) * limit;
+    
+    const where = {};
+    
+    // Filter by status if provided
+    if (status) {
+      where.status = status;
+    }
+
+    const matches = await Match.findAndCountAll({
+      include: [
+        {
+          model: Team,
+          as: 'teams',
+          where: { id: req.params.id },
+          attributes: [],
+          through: { attributes: [] }
+        },
+        {
+          model: User,
+          as: 'creator',
+          attributes: ['id', 'username']
+        }
+      ],
+      where,
+      order: [['startTime', 'DESC']],
+      limit: parseInt(limit),
+      offset: parseInt(offset)
+    });
+
+    res.json({
+      matches: matches.rows,
+      pagination: {
+        total: matches.count,
+        pages: Math.ceil(matches.count / limit),
+        currentPage: parseInt(page),
+        hasNext: offset + limit < matches.count,
+        hasPrev: page > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching team matches:', error);
+    res.status(500).json({ error: 'Failed to fetch team matches' });
   }
 });
 

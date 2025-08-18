@@ -115,11 +115,11 @@ const MatchView = () => {
     try {
       setLoading(true);
       const [matchRes, teamRes, scoreRes, flagsRes, vmsRes] = await Promise.all([
-        cyberwarService.getMatch(matchId),
+        cyberwarService.getMatchById(matchId),
         cyberwarService.getUserTeamForMatch(matchId),
         cyberwarService.getMatchScoreboard(matchId),
         cyberwarService.getMatchFlags(matchId),
-        cyberwarService.getMatchVMs(matchId)
+        cyberwarService.getMatchVMAssignments(matchId) // Updated from getMatchVMs to getMatchVMAssignments
       ]);
       
       setMatch(matchRes);

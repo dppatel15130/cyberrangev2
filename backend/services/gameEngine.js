@@ -54,19 +54,35 @@ class GameEngine {
   // Create a new match
   async createMatch(matchData, creatorId) {
     try {
+      console.log('Attempting to create match with data:', JSON.stringify(matchData, null, 2));
+      console.log('Database connection state:', Match.sequelize.connectionManager.pool.size);
+      
       const match = await Match.create({
         ...matchData,
         createdBy: creatorId,
-        status: 'created',
+        status: 'setup',
         networkConfig: matchData.networkConfig || this.getDefaultNetworkConfig(),
         vmConfig: matchData.vmConfig || this.getDefaultVMConfig(),
         scoringRules: matchData.scoringRules || this.getDefaultScoringRules()
+      }, {
+        logging: console.log // Log the SQL query
       });
 
-      console.log(`Created match: ${match.name} (ID: ${match.id})`);
+      console.log(`Successfully created match: ${match.name} (ID: ${match.id})`);
+      
+      // Verify the match was actually saved
+      const savedMatch = await Match.findByPk(match.id);
+      if (!savedMatch) {
+        throw new Error('Match was not saved to the database');
+      }
+      console.log('Verified match in database:', savedMatch.toJSON());
+      
       return match;
     } catch (error) {
       console.error('Error creating match:', error);
+      if (error.name === 'SequelizeDatabaseError') {
+        console.error('Database error details:', error.original);
+      }
       throw error;
     }
   }

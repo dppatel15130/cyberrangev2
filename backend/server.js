@@ -21,6 +21,8 @@ const flagRoutes = require('./routes/flags');
 const webLabRoutes = require('./routes/webLabRoutes');
 const matchRoutes = require('./routes/matches');
 const teamRoutes = require('./routes/teams');
+const analyticsRoutes = require('./routes/analytics');
+const cyberwarAdminRoutes = require('./routes/cyberwarAdmin');
 const proxmoxRoutes = require('./routes/proxmox');
 
 // Create Express app
@@ -50,24 +52,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
-// Lab routes
-app.get('/external-brute-force-login-lab.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'examples', 'external-brute-force-login-lab.html'));
-});
-
-app.get('/external-sql-injection-lab.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'examples', 'external-sql-injection-lab.html'));
-});
-
-app.get('/csrf-attack-lab.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'examples', 'csrf-attack-lab.html'));
-});
-
-app.get('/idor-vulnerability-lab.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'examples', 'idor-vulnerability-lab.html'));
-});
-
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/labs', labRoutes);
@@ -77,6 +61,8 @@ app.use('/api/flags', flagRoutes);
 app.use('/api/weblabs', webLabRoutes);
 app.use('/api/matches', matchRoutes);
 app.use('/api/teams', teamRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/admin/cyberwar', cyberwarAdminRoutes);
 app.use('/api/proxmox', proxmoxRoutes);
 
 // Connect to MySQL and initialize services
