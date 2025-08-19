@@ -12,6 +12,7 @@ import Footer from './components/layout/Footer';
 // Pages
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Labs from './pages/Labs';
 import LabDetails from './pages/LabDetails';
 import LabSession from './pages/LabSession';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -34,8 +35,7 @@ import NewTeam from './pages/cyberwar/NewTeam';
 import Leaderboard from './pages/cyberwar/Leaderboard';
 import Analytics from './pages/cyberwar/Analytics';
 
-// Context
-import { AuthProvider } from './context/AuthContext';
+// Context is provided in main.jsx
 
 // Utils
 import PrivateRoute from './utils/PrivateRoute';
@@ -43,10 +43,9 @@ import AdminRoute from './utils/AdminRoute';
 
 function App() {
   return (
-    <AuthProvider>
-        <div className="app-container d-flex flex-column min-vh-100">
-          <Navbar />
-          <main className="flex-grow-1">
+    <div className="app-container d-flex flex-column min-vh-100">
+      <Navbar />
+      <main className="flex-grow-1">
             <Routes>
               {/* Public Routes */}
               <Route path="/login" element={<Login />} />
@@ -61,7 +60,7 @@ function App() {
               
               <Route path="/labs" element={
                 <PrivateRoute>
-                  <Dashboard />
+                  <Labs />
                 </PrivateRoute>
               } />
               
@@ -203,11 +202,10 @@ function App() {
 
               {/* Catch-all route for unmatched paths */}
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-    </AuthProvider>
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   )
 }
 

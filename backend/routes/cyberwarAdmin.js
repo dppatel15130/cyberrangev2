@@ -74,54 +74,61 @@ router.get('/vms', cyberwarAdminController.getAdminVMs);
  * @desc Get all matches (admin only)
  * @access Private/Admin
  */
-router.get('/matches', async (req, res) => {
-  try {
-    // Return empty array for now, implement Match model later
-    res.json({ matches: [] });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch matches' });
-  }
-});
+router.get('/matches', cyberwarAdminController.getAdminMatches);
 
 /**
  * @route GET /api/admin/cyberwar/teams
  * @desc Get all teams (admin only)
  * @access Private/Admin
  */
-router.get('/teams', async (req, res) => {
-  try {
-    // Return empty array for now, implement Team model later
-    res.json({ teams: [] });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch teams' });
-  }
-});
+router.get('/teams', cyberwarAdminController.getAdminTeams);
 
 /**
  * @route POST /api/admin/cyberwar/matches
  * @desc Create new match (admin only)
  * @access Private/Admin
  */
-router.post('/matches', async (req, res) => {
-  try {
-    // Implement match creation later
-    res.json({ message: 'Match creation not implemented yet' });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to create match' });
-  }
-});
+router.post('/matches', cyberwarAdminController.createMatch);
+
+/**
+ * @route PUT /api/admin/cyberwar/matches/:id
+ * @desc Update existing match (admin only)
+ * @access Private/Admin
+ */
+router.put('/matches/:id', cyberwarAdminController.updateMatch);
+
+/**
+ * @route DELETE /api/admin/cyberwar/matches/:id
+ * @desc Delete match (admin only)
+ * @access Private/Admin
+ */
+router.delete('/matches/:id', cyberwarAdminController.deleteMatch);
+
+/**
+ * @route GET /api/admin/cyberwar/flags
+ * @desc Get all flags (admin only)
+ * @access Private/Admin
+ */
+router.get('/flags', cyberwarAdminController.getAdminFlags);
 
 /**
  * @route POST /api/admin/cyberwar/flags
  * @desc Create new flag (admin only)
  * @access Private/Admin
  */
-router.post('/flags', async (req, res) => {
-  try {
-    // Implement flag creation later
-    res.json({ message: 'Flag creation not implemented yet' });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to create flag' });
-  }
-});
+router.post('/flags', cyberwarAdminController.createFlag);
+
+/**
+ * @route PUT /api/admin/cyberwar/flags/:id
+ * @desc Update existing flag (admin only)
+ * @access Private/Admin
+ */
+router.put('/flags/:id', cyberwarAdminController.updateFlag);
+
+/**
+ * @route DELETE /api/admin/cyberwar/flags/:id
+ * @desc Delete flag (admin only)
+ * @access Private/Admin
+ */
+router.delete('/flags/:id', cyberwarAdminController.deleteFlag);
 module.exports = router;

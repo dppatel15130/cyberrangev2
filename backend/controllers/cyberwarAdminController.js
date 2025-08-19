@@ -1,4 +1,4 @@
-const { User, VM, Lab, Log } = require('../models');
+const { User, VM, Lab, Log, Match, Team, FlagSubmission, Flag } = require('../models');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
@@ -63,7 +63,7 @@ exports.getAdminUsers = async (req, res) => {
 
     const { count, rows: users } = await User.findAndCountAll({
       where: whereClause,
-      attributes: ['id', 'username', 'email', 'role', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'username', 'email', 'role', 'isActive', 'createdAt', 'updatedAt'],
       limit: parseInt(limit),
       offset: parseInt(offset),
       order: [['createdAt', 'DESC']]
@@ -198,5 +198,370 @@ exports.userAction = async (req, res) => {
   } catch (error) {
     console.error('Error in userAction:', error);
     res.status(500).json({ error: 'Failed to perform user action' });
+  }
+};
+
+/**
+ * Get all matches for admin
+ */
+exports.getAdminMatches = async (req, res) => {
+  try {
+    const matches = await Match.findAll({
+      include: [
+        {
+          model: Team,
+          as: 'teams',
+          attributes: ['id', 'name', 'color', 'currentPoints'],
+          through: { attributes: [] }
+        },
+        {
+          model: User,
+          as: 'creator',
+          attributes: ['id', 'username']
+        }
+      ],
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.json({ matches });
+  } catch (error) {
+    console.error('Error in getAdminMatches:', error);
+    res.status(500).json({ error: 'Failed to fetch matches' });
+  }
+};
+
+/**
+ * Get all teams for admin
+ */
+exports.getAdminTeams = async (req, res) => {
+  try {
+    const teams = await Team.findAll({
+      include: [
+        {
+          model: User,
+          as: 'members',
+          attributes: ['id', 'username', 'role'],
+          through: { attributes: [] }
+        },
+        {
+          model: Match,
+          as: 'matches',
+          attributes: ['id', 'name', 'status'],
+          through: { attributes: [] }
+        }
+      ],
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.json({ teams });
+  } catch (error) {
+    console.error('Error in getAdminTeams:', error);
+    res.status(500).json({ error: 'Failed to fetch teams' });
+  }
+};
+
+/**
+ * Create new match (admin only)
+ */
+exports.createMatch = async (req, res) => {
+  try {
+    const { name, description, matchType, maxTeams, startTime, endTime, duration } = req.body;
+
+    const match = await Match.create({
+      name,
+      description,
+      matchType: matchType || 'capture_flag',
+      maxTeams: maxTeams || 10,
+      duration: duration ? duration * 60 : 3600, // Convert minutes to seconds
+      startTime: startTime ? new Date(startTime) : null,
+      endTime: endTime ? new Date(endTime) : null,
+      status: 'waiting',
+      createdBy: req.user.id
+    });
+
+    const matchWithDetails = await Match.findByPk(match.id, {
+      include: [
+        {
+          model: User,
+          as: 'creator',
+          attributes: ['id', 'username']
+        }
+      ]
+    });
+
+    res.status(201).json({ 
+      message: 'Match created successfully', 
+      match: matchWithDetails 
+    });
+  } catch (error) {
+    console.error('Error in createMatch:', error);
+    res.status(500).json({ error: 'Failed to create match' });
+  }
+};
+
+/**
+ * Create new flag (admin only)
+ */
+exports.createFlag = async (req, res) => {
+  try {
+    const { matchId, name, description, flagValue, points, category, difficulty, hints } = req.body;
+
+    // Validate required fields
+    if (!matchId || !name || !flagValue || !points) {
+      return res.status(400).json({ 
+        error: 'Match ID, name, flag value, and points are required' 
+      });
+    }
+
+    // Check if match exists
+    const match = await Match.findByPk(matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Check if flag value already exists in this match
+    const existingFlag = await Flag.findOne({
+      where: { matchId, flagValue: flagValue.trim() }
+    });
+
+    if (existingFlag) {
+      return res.status(409).json({ 
+        error: 'A flag with this value already exists in this match' 
+      });
+    }
+
+    // Create the flag
+    const flag = await Flag.create({
+      matchId,
+      name: name.trim(),
+      description: description?.trim() || null,
+      flagValue: flagValue.trim(),
+      points: parseInt(points),
+      category: category || 'misc',
+      difficulty: difficulty || 'beginner',
+      hints: hints || [],
+      createdBy: req.user.id,
+      isActive: true
+    });
+
+    // Fetch the created flag with associations
+    const createdFlag = await Flag.findByPk(flag.id, {
+      include: [
+        { model: Match, as: 'match', attributes: ['id', 'name'] },
+        { model: User, as: 'creator', attributes: ['id', 'username'] }
+      ]
+    });
+
+    res.status(201).json({ 
+      message: 'Flag created successfully', 
+      flag: createdFlag 
+    });
+  } catch (error) {
+    console.error('Error in createFlag:', error);
+    res.status(500).json({ error: 'Failed to create flag' });
+  }
+};
+
+/**
+ * Get all flags for admin
+ */
+exports.getAdminFlags = async (req, res) => {
+  try {
+    const { matchId } = req.query;
+    
+    const whereClause = {};
+    if (matchId) {
+      whereClause.matchId = matchId;
+    }
+
+    const flags = await Flag.findAll({
+      where: whereClause,
+      include: [
+        { model: Match, as: 'match', attributes: ['id', 'name'] },
+        { model: User, as: 'creator', attributes: ['id', 'username'] },
+        { model: Team, as: 'capturingTeam', attributes: ['id', 'name', 'color'] },
+        { model: User, as: 'capturingUser', attributes: ['id', 'username'] }
+      ],
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.json({ flags });
+  } catch (error) {
+    console.error('Error in getAdminFlags:', error);
+    res.status(500).json({ error: 'Failed to fetch flags' });
+  }
+};
+
+/**
+ * Update flag (admin only)
+ */
+exports.updateFlag = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, flagValue, points, category, difficulty, hints, isActive } = req.body;
+
+    const flag = await Flag.findByPk(id);
+    if (!flag) {
+      return res.status(404).json({ error: 'Flag not found' });
+    }
+
+    // Update flag with provided data
+    const updateData = {};
+    if (name !== undefined) updateData.name = name.trim();
+    if (description !== undefined) updateData.description = description?.trim() || null;
+    if (flagValue !== undefined) updateData.flagValue = flagValue.trim();
+    if (points !== undefined) updateData.points = parseInt(points);
+    if (category !== undefined) updateData.category = category;
+    if (difficulty !== undefined) updateData.difficulty = difficulty;
+    if (hints !== undefined) updateData.hints = hints;
+    if (isActive !== undefined) updateData.isActive = isActive;
+
+    await flag.update(updateData);
+
+    // Fetch updated flag with associations
+    const updatedFlag = await Flag.findByPk(id, {
+      include: [
+        { model: Match, as: 'match', attributes: ['id', 'name'] },
+        { model: User, as: 'creator', attributes: ['id', 'username'] },
+        { model: Team, as: 'capturingTeam', attributes: ['id', 'name', 'color'] },
+        { model: User, as: 'capturingUser', attributes: ['id', 'username'] }
+      ]
+    });
+
+    res.json({ 
+      message: 'Flag updated successfully', 
+      flag: updatedFlag 
+    });
+  } catch (error) {
+    console.error('Error in updateFlag:', error);
+    res.status(500).json({ error: 'Failed to update flag' });
+  }
+};
+
+/**
+ * Delete flag (admin only)
+ */
+exports.deleteFlag = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const flag = await Flag.findByPk(id);
+    if (!flag) {
+      return res.status(404).json({ error: 'Flag not found' });
+    }
+
+    // Check if flag has been captured
+    if (flag.capturedBy) {
+      return res.status(400).json({ 
+        error: 'Cannot delete a flag that has been captured by a team' 
+      });
+    }
+
+    await flag.destroy();
+
+    res.json({ 
+      message: 'Flag deleted successfully',
+      deletedFlagId: id 
+    });
+  } catch (error) {
+    console.error('Error in deleteFlag:', error);
+    res.status(500).json({ error: 'Failed to delete flag' });
+  }
+};
+
+/**
+ * Update existing match (admin only)
+ */
+exports.updateMatch = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, matchType, maxTeams, startTime, endTime, status, duration } = req.body;
+
+    const match = await Match.findByPk(id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Update match with provided data
+    const updateData = {};
+    if (name !== undefined) updateData.name = name;
+    if (description !== undefined) updateData.description = description;
+    if (matchType !== undefined) updateData.matchType = matchType;
+    if (maxTeams !== undefined) updateData.maxTeams = maxTeams;
+    if (duration !== undefined) updateData.duration = duration * 60; // Convert minutes to seconds
+    if (startTime !== undefined) {
+      // Store the time as provided (treat as local time)
+      updateData.startTime = startTime ? new Date(startTime) : null;
+    }
+    if (endTime !== undefined) {
+      // Store the time as provided (treat as local time)
+      updateData.endTime = endTime ? new Date(endTime) : null;
+    }
+    if (status !== undefined) updateData.status = status;
+
+    await match.update(updateData);
+
+    // Fetch updated match with creator details
+    const updatedMatch = await Match.findByPk(id, {
+      include: [
+        { model: User, as: 'creator', attributes: ['id', 'username'] },
+        { model: Team, as: 'teams', attributes: ['id', 'name', 'color', 'currentPoints'], through: { attributes: [] } }
+      ]
+    });
+
+    res.json({ 
+      message: 'Match updated successfully', 
+      match: updatedMatch 
+    });
+  } catch (error) {
+    console.error('Error in updateMatch:', error);
+    res.status(500).json({ error: 'Failed to update match' });
+  }
+};
+
+/**
+ * Delete match (admin only)
+ */
+exports.deleteMatch = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { ScoringEvent, Flag } = require('../models');
+
+    const match = await Match.findByPk(id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Check if match is currently active
+    if (match.status === 'active') {
+      return res.status(400).json({ 
+        error: 'Cannot delete an active match. Please stop the match first.' 
+      });
+    }
+
+    // Delete related data using Sequelize methods
+    // Delete scoring events
+    await ScoringEvent.destroy({
+      where: { matchId: id }
+    });
+
+    // Delete flags associated with this match
+    await Flag.destroy({
+      where: { matchId: id }
+    });
+
+    // Remove team associations (this will be handled by the through table)
+    await match.setTeams([]);
+
+    // Delete the match
+    await match.destroy();
+
+    res.json({ 
+      message: 'Match deleted successfully',
+      deletedMatchId: id 
+    });
+  } catch (error) {
+    console.error('Error in deleteMatch:', error);
+    res.status(500).json({ error: 'Failed to delete match' });
   }
 };

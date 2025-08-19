@@ -1,0 +1,392 @@
+2025-08-19 09:40:53 [WARN]: Security Event: INVALID_LOGIN_ATTEMPT
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "SECURITY",
+  "username": "'OR 1=1--",
+  "ip": "::ffff:127.0.0.1",
+  "reason": "User not found"
+}
+2025-08-19 09:41:39 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 09:41:39 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 09:41:39 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 09:41:39 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:14:14 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:14:14 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:14:14 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:14:14 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:15:47 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:15:47 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:15:47 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 13:15:47 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 14:23:55 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 14:23:55 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 14:23:55 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getPerformanceData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:11:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/performance?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}
+2025-08-19 14:23:55 [ERROR]: Application Error logger.info is not a function
+TypeError: logger.info is not a function
+    at exports.getCategoryData (/home/kali/Downloads/cyberrangev1-main/backend/controllers/analyticsController.js:146:10)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at exports.auth (/home/kali/Downloads/cyberrangev1-main/backend/middleware/auth.js:55:5)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /home/kali/Downloads/cyberrangev1-main/backend/node_modules/router/index.js:295:15
+Metadata: {
+  "service": "cyber-range-backend",
+  "category": "ERROR",
+  "name": "TypeError",
+  "request": {
+    "method": "GET",
+    "url": "/api/analytics/categories?range=month",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "userId": 1
+  }
+}

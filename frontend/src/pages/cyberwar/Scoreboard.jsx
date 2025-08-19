@@ -505,11 +505,11 @@ const Scoreboard = () => {
           <Row>
             {flags.map(flag => (
               <Col md={6} lg={4} key={flag.id} className="mb-3">
-                <Card className={flag.capturedBy ? 'border-success' : 'border-warning'}>
+                <Card className={flag.captured ? 'border-success' : 'border-warning'}>
                   <Card.Header className="d-flex justify-content-between align-items-center">
                     <span className="fw-bold">{flag.name}</span>
-                    <Badge bg={flag.capturedBy ? 'success' : 'warning'}>
-                      {flag.capturedBy ? 'Captured' : 'Available'}
+                    <Badge bg={flag.captured ? 'success' : 'warning'}>
+                      {flag.captured ? 'Captured' : 'Available'}
                     </Badge>
                   </Card.Header>
                   <Card.Body>
@@ -523,7 +523,7 @@ const Scoreboard = () => {
                       <p className="small mb-2">{flag.description}</p>
                     )}
                     
-                    {flag.capturedBy && (
+                    {flag.captured && flag.captureInfo && (
                       <div>
                         <div className="d-flex align-items-center">
                           <div 
@@ -531,14 +531,14 @@ const Scoreboard = () => {
                             style={{ 
                               width: '12px', 
                               height: '12px', 
-                              backgroundColor: scoreboard.find(t => t.id === flag.capturedBy)?.color || '#6c757d'
+                              backgroundColor: flag.captureInfo?.teamColor || '#6c757d'
                             }}
                           ></div>
-                          <strong>{scoreboard.find(t => t.id === flag.capturedBy)?.name}</strong>
+                          <strong>{flag.captureInfo?.teamName}</strong>
                         </div>
-                        {flag.capturedAt && (
+                        {flag.captureInfo?.capturedAt && (
                           <small className="text-muted">
-                            Captured {formatTimeAgo(flag.capturedAt)}
+                            Captured {formatTimeAgo(flag.captureInfo.capturedAt)}
                           </small>
                         )}
                       </div>

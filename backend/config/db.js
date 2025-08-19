@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'cyberrangev2',
+  process.env.DB_NAME || 'cyberrangev3',
   process.env.DB_USER || 'root',
   process.env.DB_PASSWORD || 'kali',
   {

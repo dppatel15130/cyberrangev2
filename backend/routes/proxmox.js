@@ -131,7 +131,7 @@ router.get('/vms/available', authenticateToken, requireAdmin, async (req, res) =
   }
 });
 
-// Get VM assignments for a match
+// Get VM assignments for a match (admin only)
 router.get('/matches/:matchId/assignments', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const matchId = parseInt(req.params.matchId);
@@ -146,6 +146,59 @@ router.get('/matches/:matchId/assignments', authenticateToken, requireAdmin, asy
   } catch (error) {
     console.error('Error getting match assignments:', error);
     res.status(500).json({ error: 'Failed to get match assignments' });
+  }
+});
+
+// Get VM assignments for current user's team in a match
+router.get('/matches/:matchId/my-assignments', authenticateToken, async (req, res) => {
+  try {
+    const matchId = parseInt(req.params.matchId);
+    const userId = req.user.id;
+    
+    // Get the match with teams
+    const match = await require('../models').Match.findByPk(matchId, {
+      include: [
+        {
+          model: require('../models').Team,
+          as: 'teams',
+          through: { attributes: [] },
+          include: [
+            {
+              model: require('../models').User,
+              as: 'members',
+              where: { id: userId },
+              attributes: ['id'],
+              through: { attributes: [] }
+            }
+          ]
+        }
+      ]
+    });
+    
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+    
+    // Find user's team
+    const userTeam = match.teams.find(team => team.members.length > 0);
+    if (!userTeam) {
+      return res.status(403).json({ error: 'You are not participating in this match' });
+    }
+    
+    // Get VM assignments for this team
+    const assignments = proxmoxService.getMatchAssignments(matchId);
+    const teamVMs = assignments[userTeam.id] || [];
+    
+    res.json({
+      matchId,
+      teamId: userTeam.id,
+      teamName: userTeam.name,
+      vms: teamVMs,
+      totalVMs: teamVMs.length
+    });
+  } catch (error) {
+    console.error('Error getting user VM assignments:', error);
+    res.status(500).json({ error: 'Failed to get VM assignments' });
   }
 });
 
@@ -298,6 +351,32 @@ router.get('/health', authenticateToken, async (req, res) => {
     res.status(500).json({ 
       status: 'error', 
       message: 'Health check failed' 
+    });
+  }
+});
+
+// Debug endpoint to check ProxmoxService state
+router.get('/debug', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const debugInfo = {
+      assignmentsSize: proxmoxService.assignments.size,
+      assignments: Array.from(proxmoxService.assignments.entries()),
+      availableVMsSize: proxmoxService.availableVMs.size,
+      availableVMs: Array.from(proxmoxService.availableVMs.entries()),
+      matchAssignments: {}
+    };
+
+    // Get assignments for each match
+    for (let matchId = 1; matchId <= 5; matchId++) {
+      debugInfo.matchAssignments[matchId] = proxmoxService.getMatchAssignments(matchId);
+    }
+
+    res.json(debugInfo);
+  } catch (error) {
+    console.error('Error getting debug info:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Debug info failed' 
     });
   }
 });

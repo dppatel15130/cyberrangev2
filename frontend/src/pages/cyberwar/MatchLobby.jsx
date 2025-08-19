@@ -43,12 +43,20 @@ const MatchLobby = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showCreateTeam, setShowCreateTeam] = useState(false);
+  const [showJoinTeam, setShowJoinTeam] = useState(false);
+  const [availableTeams, setAvailableTeams] = useState([]);
   const [newTeamData, setNewTeamData] = useState({
     name: '',
     description: '',
     color: '#007bff',
     maxMembers: 4
   });
+  const [joinTeamData, setJoinTeamData] = useState({
+    teamId: '',
+    inviteCode: ''
+  });
+  const [selectedMatchForJoin, setSelectedMatchForJoin] = useState(null);
+  const [showTeamSelection, setShowTeamSelection] = useState(false);
 
   // WebSocket for real-time updates
   const wsUrl = `ws://localhost:5000/ws/scoring`;
@@ -69,7 +77,7 @@ const MatchLobby = () => {
       setLoading(true);
       const [activeRes, allMatches, teamsRes] = await Promise.all([
         cyberwarService.getActiveMatches(),
-        cyberwarService.getMatches({ status: 'ready' }),
+        cyberwarService.getMatches({ status: 'waiting' }),
         cyberwarService.getTeams({ search: '', status: 'active' })
       ]);
       
@@ -94,7 +102,7 @@ const MatchLobby = () => {
     try {
       const [activeRes, upcomingRes] = await Promise.all([
         cyberwarService.getActiveMatches(),
-        cyberwarService.getMatches({ status: 'ready' })
+        cyberwarService.getMatches({ status: 'waiting' })
       ]);
       setActiveMatches(activeRes || []);
       setUpcomingMatches(upcomingRes.matches || []);
@@ -116,8 +124,52 @@ const MatchLobby = () => {
     }
   };
 
-  const joinMatch = (matchId) => {
-    navigate(`/cyberwar/match/${matchId}`);
+  const fetchAvailableTeams = async () => {
+    try {
+      const response = await cyberwarService.getTeams({ status: 'active' });
+      setAvailableTeams(response.teams || []);
+    } catch (err) {
+      console.error('Failed to fetch available teams:', err);
+      setError('Failed to load available teams.');
+    }
+  };
+
+  const handleJoinTeam = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.joinTeam(joinTeamData.teamId, joinTeamData.inviteCode);
+      setShowJoinTeam(false);
+      setJoinTeamData({ teamId: '', inviteCode: '' });
+      fetchData(); // Refresh data
+    } catch (err) {
+      console.error('Failed to join team:', err);
+      setError('Failed to join team. Please try again.');
+    }
+  };
+
+  const joinMatch = async (matchId) => {
+    try {
+      // Check if user has a team
+      if (userTeams.length === 0) {
+        setError('You need to be in a team to join matches. Please create or join a team first.');
+        return;
+      }
+
+      // If user has multiple teams, show team selection
+      if (userTeams.length > 1) {
+        setSelectedMatchForJoin(matchId);
+        setShowTeamSelection(true);
+        return;
+      }
+
+      // If user has only one team, join with that team
+      const teamId = userTeams[0].id;
+      await cyberwarService.joinMatch(matchId, teamId);
+      navigate(`/cyberwar/match/${matchId}`);
+    } catch (err) {
+      console.error('Failed to join match:', err);
+      setError('Failed to join match. Please try again.');
+    }
   };
 
   const viewMatch = (matchId) => {
@@ -128,8 +180,8 @@ const MatchLobby = () => {
     switch (match.status) {
       case 'active':
         return <Badge bg="success"><FontAwesomeIcon icon={faPlay} className="me-1" />Active</Badge>;
-      case 'ready':
-        return <Badge bg="warning"><FontAwesomeIcon icon={faClock} className="me-1" />Ready</Badge>;
+      case 'waiting':
+        return <Badge bg="warning"><FontAwesomeIcon icon={faClock} className="me-1" />Waiting</Badge>;
       case 'completed':
         return <Badge bg="secondary"><FontAwesomeIcon icon={faStop} className="me-1" />Completed</Badge>;
       default:
@@ -258,17 +310,17 @@ const MatchLobby = () => {
             </Card.Body>
           </Card>
 
-          {/* Upcoming/Ready Matches */}
+          {/* Upcoming/Waiting Matches */}
           <Card>
             <Card.Header>
               <FontAwesomeIcon icon={faClock} className="me-2" />
-              Ready to Start ({upcomingMatches.length})
+              Waiting Matches ({upcomingMatches.length})
             </Card.Header>
             <Card.Body>
               {upcomingMatches.length === 0 ? (
                 <div className="text-center py-4 text-muted">
                   <FontAwesomeIcon icon={faClock} size="3x" className="mb-3 opacity-25" />
-                  <p>No matches ready to start</p>
+                  <p>No waiting matches available</p>
                   <small>Matches appear here when teams are assigned</small>
                 </div>
               ) : (
@@ -301,7 +353,7 @@ const MatchLobby = () => {
                               disabled={userTeams.length === 0}
                             >
                               <FontAwesomeIcon icon={faPlay} className="me-1" />
-                              {userTeams.length === 0 ? 'Need Team' : 'Join Match'}
+                              {userTeams.length === 0 ? 'Need Team' : 'View Match'}
                             </Button>
                           </div>
                         </Card.Body>
@@ -325,10 +377,16 @@ const MatchLobby = () => {
               {userTeams.length === 0 ? (
                 <div className="text-center py-3">
                   <p className="text-muted mb-3">You're not in any teams yet</p>
-                  <Button variant="outline-primary" onClick={() => setShowCreateTeam(true)}>
-                    <FontAwesomeIcon icon={faPlus} className="me-1" />
-                    Create Team
-                  </Button>
+                  <div className="d-grid gap-2">
+                    <Button variant="outline-primary" onClick={() => setShowCreateTeam(true)}>
+                      <FontAwesomeIcon icon={faPlus} className="me-1" />
+                      Create Team
+                    </Button>
+                    <Button variant="outline-secondary" onClick={() => setShowJoinTeam(true)}>
+                      <FontAwesomeIcon icon={faUsers} className="me-1" />
+                      Join Existing Team
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <ListGroup variant="flush">
@@ -356,13 +414,32 @@ const MatchLobby = () => {
                             )}
                           </small>
                         </div>
-                        <Button 
-                          size="sm" 
-                          variant="outline-primary"
-                          onClick={() => navigate(`/cyberwar/teams/${team.id}`)}
-                        >
-                          View
-                        </Button>
+                        <div className="d-flex gap-1">
+                          <Button 
+                            size="sm" 
+                            variant="outline-primary"
+                            onClick={() => navigate(`/cyberwar/teams/${team.id}`)}
+                          >
+                            View
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline-danger"
+                            onClick={async () => {
+                              if (window.confirm(`Are you sure you want to leave ${team.name}?`)) {
+                                try {
+                                  await cyberwarService.leaveTeam(team.id);
+                                  fetchData(); // Refresh data
+                                } catch (err) {
+                                  console.error('Failed to leave team:', err);
+                                  setError('Failed to leave team. Please try again.');
+                                }
+                              }
+                            }}
+                          >
+                            Leave
+                          </Button>
+                        </div>
                       </div>
                     </ListGroup.Item>
                   ))}
@@ -464,6 +541,106 @@ const MatchLobby = () => {
               </Button>
             </div>
           </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Join Team Modal */}
+      <Modal show={showJoinTeam} onHide={() => setShowJoinTeam(false)} onShow={fetchAvailableTeams}>
+        <Modal.Header closeButton>
+          <Modal.Title>Join Existing Team</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleJoinTeam}>
+            <Form.Group className="mb-3">
+              <Form.Label>Select Team *</Form.Label>
+              <Form.Select 
+                value={joinTeamData.teamId}
+                onChange={(e) => setJoinTeamData({...joinTeamData, teamId: e.target.value})}
+                required
+              >
+                <option value="">Choose a team...</option>
+                {availableTeams.map(team => (
+                  <option key={team.id} value={team.id}>
+                    {team.name} ({team.memberCount || team.members?.length || 0}/{team.maxMembers} members)
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Invite Code (Optional)</Form.Label>
+              <Form.Control 
+                type="text"
+                value={joinTeamData.inviteCode}
+                onChange={(e) => setJoinTeamData({...joinTeamData, inviteCode: e.target.value})}
+                placeholder="Enter invite code if required"
+              />
+              <Form.Text className="text-muted">
+                Some teams may require an invite code to join
+              </Form.Text>
+            </Form.Group>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button 
+                variant="secondary" 
+                onClick={() => setShowJoinTeam(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                <FontAwesomeIcon icon={faUsers} className="me-1" />
+                Join Team
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Team Selection Modal */}
+      <Modal show={showTeamSelection} onHide={() => setShowTeamSelection(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Select Team to Join Match</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="mb-3">You have multiple teams. Which team would you like to use for this match?</p>
+          <ListGroup>
+            {userTeams.map(team => (
+              <ListGroup.Item 
+                key={team.id} 
+                action 
+                onClick={async () => {
+                  try {
+                    await cyberwarService.joinMatch(selectedMatchForJoin, team.id);
+                    setShowTeamSelection(false);
+                    setSelectedMatchForJoin(null);
+                    navigate(`/cyberwar/match/${selectedMatchForJoin}`);
+                  } catch (err) {
+                    console.error('Failed to join match:', err);
+                    setError('Failed to join match. Please try again.');
+                  }
+                }}
+                className="d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <div className="d-flex align-items-center">
+                    <div 
+                      className="rounded-circle me-2" 
+                      style={{ 
+                        width: '12px', 
+                        height: '12px', 
+                        backgroundColor: team.color 
+                      }}
+                    ></div>
+                    <strong>{team.name}</strong>
+                  </div>
+                  <small className="text-muted">{team.description}</small>
+                </div>
+                <Button size="sm" variant="outline-primary">
+                  Select
+                </Button>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
         </Modal.Body>
       </Modal>
 

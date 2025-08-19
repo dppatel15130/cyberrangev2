@@ -1,5 +1,5 @@
 const { sequelize } = require('./config/db');
-const Umzug = require('umzug');
+const { Umzug } = require('umzug');
 const path = require('path');
 
 async function runMigrations() {
@@ -8,24 +8,40 @@ async function runMigrations() {
     
     const umzug = new Umzug({
       migrations: {
-        path: path.join(__dirname, 'migrations'),
-        params: [
-          sequelize.getQueryInterface(),
-          sequelize.constructor,
-          () => {
-            throw new Error('Migration tried to use old style "done" callback. Please upgrade to "umzug" and return a promise instead.');
-          },
-        ],
+        glob: path.join(__dirname, 'migrations', '*.js'),
+        resolve: ({ name, path, context }) => {
+          const migration = require(path);
+          return {
+            name,
+            up: async () => migration.up(context.queryInterface, context.sequelize.constructor),
+            down: async () => migration.down(context.queryInterface, context.sequelize.constructor),
+          };
+        },
       },
-      storage: 'sequelize',
-      storageOptions: {
-        sequelize: sequelize,
+      context: { queryInterface: sequelize.getQueryInterface(), sequelize },
+      storage: {
+        async executed() {
+          const [results] = await sequelize.query(
+            "SELECT name FROM SequelizeMeta WHERE name IN (SELECT name FROM SequelizeMeta ORDER BY name ASC)"
+          );
+          return results.map(result => result.name);
+        },
+        async logMigration({ name }) {
+          await sequelize.query('INSERT INTO SequelizeMeta (name) VALUES (?)', {
+            replacements: [name],
+          });
+        },
+        async unlogMigration({ name }) {
+          await sequelize.query('DELETE FROM SequelizeMeta WHERE name = ?', {
+            replacements: [name],
+          });
+        },
       },
     });
 
     // Check which migrations have already been run
     const migrations = await umzug.pending();
-    console.log('Pending migrations:', migrations.map(m => m.file));
+    console.log('Pending migrations:', migrations.map(m => m.name));
 
     if (migrations.length === 0) {
       console.log('No pending migrations.');

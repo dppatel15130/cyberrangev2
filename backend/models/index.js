@@ -10,6 +10,7 @@ const WebLabCompletion = require('./WebLabCompletion');
 const Team = require('./Team');
 const Match = require('./Match');
 const ScoringEvent = require('./ScoringEvent');
+const Flag = require('./Flag');
 
 // Define associations with optimized indexing
 User.hasMany(Lab, { 
@@ -279,6 +280,50 @@ FlagSubmission.belongsTo(Match, {
   as: 'match'
 });
 
+// Flag associations
+Match.hasMany(Flag, {
+  foreignKey: 'matchId',
+  as: 'matchFlags',
+  onDelete: 'CASCADE'
+});
+
+Flag.belongsTo(Match, {
+  foreignKey: 'matchId',
+  as: 'match'
+});
+
+User.hasMany(Flag, {
+  foreignKey: 'createdBy',
+  as: 'createdFlags'
+});
+
+Flag.belongsTo(User, {
+  foreignKey: 'createdBy',
+  as: 'creator'
+});
+
+Team.hasMany(Flag, {
+  foreignKey: 'capturedBy',
+  as: 'capturedFlags',
+  onDelete: 'SET NULL'
+});
+
+Flag.belongsTo(Team, {
+  foreignKey: 'capturedBy',
+  as: 'capturingTeam'
+});
+
+User.hasMany(Flag, {
+  foreignKey: 'capturedByUser',
+  as: 'capturedFlagsAsUser',
+  onDelete: 'SET NULL'
+});
+
+Flag.belongsTo(User, {
+  foreignKey: 'capturedByUser',
+  as: 'capturingUser'
+});
+
 // Add the UserLab model and Phase 2 models to exports
 module.exports = {
   User,
@@ -291,5 +336,6 @@ module.exports = {
   // Phase 2 models
   Team,
   Match,
-  ScoringEvent
+  ScoringEvent,
+  Flag
 };

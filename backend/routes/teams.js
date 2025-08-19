@@ -29,7 +29,7 @@ router.get('/', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         },
         {
           model: Match,
@@ -128,7 +128,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         },
         {
           model: Match,
@@ -236,7 +236,7 @@ router.post('/', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         }
       ]
     });
@@ -301,7 +301,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         }
       ]
     });
@@ -505,7 +505,7 @@ router.post('/:id/members', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         }
       ]
     });
@@ -588,7 +588,7 @@ router.delete('/:id/members/:userId', authenticateToken, async (req, res) => {
           model: User,
           as: 'members',
           attributes: ['id', 'username', 'email', 'role'],
-          through: { attributes: [] } // Remove joinedAt reference
+          through: { attributes: [] }
         }
       ]
     });

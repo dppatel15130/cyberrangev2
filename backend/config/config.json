@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "kali",
-    "database": "cyberrange",
+    "database": "cyberrangev3",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

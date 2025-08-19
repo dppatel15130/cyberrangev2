@@ -1,5 +1,5 @@
 const express = require('express');
-const { Match, Team, User, ScoringEvent } = require('../models');
+const { Match, Team, User, ScoringEvent, Flag } = require('../models');
 const { auth: authenticateToken, admin: requireAdmin } = require('../middleware/auth');
 const gameEngine = require('../services/gameEngine');
 const scoringService = require('../services/scoringService');
@@ -109,7 +109,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
               model: User,
               as: 'members',
               attributes: ['id', 'username', 'role'],
-              through: { attributes: ['joinedAt'] }
+              through: { attributes: [] }
             },
             {
               model: ScoringEvent,
@@ -281,6 +281,145 @@ router.put('/:id', authenticateToken, requireAdmin, async (req, res) => {
   }
 });
 
+// Leave a match
+router.post('/:id/leave', authenticateToken, async (req, res) => {
+  try {
+    const match = await Match.findByPk(req.params.id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    if (match.status === 'active') {
+      return res.status(400).json({ error: 'Cannot leave an active match' });
+    }
+
+    // Get user's team for this match
+    const userTeam = await match.getTeams({
+      include: [
+        {
+          model: User,
+          as: 'members',
+          where: { id: req.user.id },
+          attributes: ['id']
+        }
+      ]
+    });
+
+    if (userTeam.length === 0) {
+      return res.status(403).json({ error: 'You are not participating in this match' });
+    }
+
+    const team = userTeam[0];
+
+    // Remove team from match
+    await match.removeTeam(team);
+    
+    // Update current teams count
+    const currentTeamCount = await match.countTeams();
+    await match.update({ currentTeams: currentTeamCount });
+
+    // Update match status if needed
+    if (match.status === 'waiting' && currentTeamCount < 2) {
+      await match.update({ status: 'setup' });
+    }
+
+    res.json({
+      message: 'Successfully left match',
+      match: await Match.findByPk(match.id, {
+        include: [
+          {
+            model: Team,
+            as: 'teams',
+            through: { attributes: [] }
+          }
+        ]
+      })
+    });
+  } catch (error) {
+    console.error('Error leaving match:', error);
+    res.status(500).json({ error: 'Failed to leave match' });
+  }
+});
+
+// Join a match with a team
+router.post('/:id/join', authenticateToken, async (req, res) => {
+  try {
+    const { teamId } = req.body;
+    
+    if (!teamId) {
+      return res.status(400).json({ error: 'Team ID is required' });
+    }
+
+    const match = await Match.findByPk(req.params.id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    if (match.status !== 'waiting' && match.status !== 'setup') {
+      return res.status(400).json({ error: 'Match is not accepting new teams' });
+    }
+
+    // Check if team exists and user is a member
+    const team = await Team.findByPk(teamId, {
+      include: [
+        {
+          model: User,
+          as: 'members',
+          where: { id: req.user.id },
+          attributes: ['id']
+        }
+      ]
+    });
+
+    if (!team) {
+      return res.status(404).json({ error: 'Team not found' });
+    }
+
+    if (team.members.length === 0) {
+      return res.status(403).json({ error: 'You are not a member of this team' });
+    }
+
+    // Check if team is already in the match
+    const isAlreadyInMatch = await match.hasTeam(teamId);
+    if (isAlreadyInMatch) {
+      return res.status(400).json({ error: 'Team is already participating in this match' });
+    }
+
+    // Check if match has capacity
+    const currentTeamCount = await match.countTeams();
+    if (currentTeamCount >= match.maxTeams) {
+      return res.status(400).json({ error: 'Match is at maximum capacity' });
+    }
+
+    // Add team to match
+    await match.addTeam(team);
+    
+    // Update match status if needed
+    if (match.status === 'setup' && currentTeamCount + 1 >= 2) {
+      await match.update({ status: 'waiting' });
+    }
+
+    // Update current teams count
+    await match.update({ currentTeams: currentTeamCount + 1 });
+
+    res.json({
+      message: 'Successfully joined match',
+      match: await Match.findByPk(match.id, {
+        include: [
+          {
+            model: Team,
+            as: 'teams',
+            through: { attributes: [] }
+          }
+        ]
+      })
+    });
+  } catch (error) {
+    console.error('Error joining match:', error);
+    res.status(500).json({ error: 'Failed to join match' });
+  }
+});
+
 // Add teams to match
 router.post('/:id/teams', authenticateToken, requireAdmin, async (req, res) => {
   try {
@@ -393,7 +532,7 @@ router.post('/:id/start', authenticateToken, requireAdmin, async (req, res) => {
       return res.status(404).json({ error: 'Match not found' });
     }
 
-    if (match.status !== 'ready') {
+    if (match.status !== 'waiting') {
       return res.status(400).json({ 
         error: `Match is not ready to start. Current status: ${match.status}` 
       });
@@ -411,6 +550,66 @@ router.post('/:id/start', authenticateToken, requireAdmin, async (req, res) => {
     console.error('Error starting match:', error);
     res.status(500).json({ 
       error: 'Failed to start match: ' + error.message 
+    });
+  }
+});
+
+// Pause match (admin only)
+router.post('/:id/pause', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const match = await Match.findByPk(req.params.id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    if (match.status !== 'active') {
+      return res.status(400).json({ 
+        error: `Match is not active. Current status: ${match.status}` 
+      });
+    }
+
+    // Update match status to paused
+    await match.update({ status: 'paused' });
+
+    res.json({
+      message: 'Match paused successfully',
+      matchId: match.id,
+      pauseTime: new Date()
+    });
+  } catch (error) {
+    console.error('Error pausing match:', error);
+    res.status(500).json({ 
+      error: 'Failed to pause match: ' + error.message 
+    });
+  }
+});
+
+// Resume match (admin only)
+router.post('/:id/resume', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const match = await Match.findByPk(req.params.id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    if (match.status !== 'paused') {
+      return res.status(400).json({ 
+        error: `Match is not paused. Current status: ${match.status}` 
+      });
+    }
+
+    // Update match status back to active
+    await match.update({ status: 'active' });
+
+    res.json({
+      message: 'Match resumed successfully',
+      matchId: match.id,
+      resumeTime: new Date()
+    });
+  } catch (error) {
+    console.error('Error resuming match:', error);
+    res.status(500).json({ 
+      error: 'Failed to resume match: ' + error.message 
     });
   }
 });
@@ -523,6 +722,46 @@ router.get('/:id/scoreboard', authenticateToken, async (req, res) => {
   }
 });
 
+// Get user's team for a specific match
+router.get('/:id/user-team', authenticateToken, async (req, res) => {
+  try {
+    const match = await Match.findByPk(req.params.id, {
+      include: [
+        {
+          model: Team,
+          as: 'teams',
+          through: { attributes: [] },
+          include: [
+            {
+              model: User,
+              as: 'members',
+              where: { id: req.user.id },
+              attributes: ['id'],
+              through: { attributes: [] }
+            }
+          ]
+        }
+      ]
+    });
+
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Find the team that the user is a member of in this match
+    const userTeam = match.teams.find(team => team.members.length > 0);
+    
+    if (!userTeam) {
+      return res.status(404).json({ error: 'User is not in any team for this match' });
+    }
+
+    res.json(userTeam);
+  } catch (error) {
+    console.error('Error fetching user team for match:', error);
+    res.status(500).json({ error: 'Failed to fetch user team for match' });
+  }
+});
+
 // Get match events/timeline
 router.get('/:id/events', authenticateToken, async (req, res) => {
   try {
@@ -578,6 +817,245 @@ router.get('/:id/events', authenticateToken, async (req, res) => {
   } catch (error) {
     console.error('Error fetching match events:', error);
     res.status(500).json({ error: 'Failed to fetch match events' });
+  }
+});
+
+// Submit flag for match
+router.post('/:id/flags/submit', authenticateToken, async (req, res) => {
+  try {
+    const { flagId, value } = req.body;
+    
+    if (!flagId || !value) {
+      return res.status(400).json({ error: 'Flag ID and value are required' });
+    }
+
+    const match = await Match.findByPk(req.params.id);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    if (match.status !== 'active') {
+      return res.status(400).json({ error: 'Match is not active' });
+    }
+
+    // Get user's team for this match
+    const userTeam = await match.getTeams({
+      include: [
+        {
+          model: User,
+          as: 'members',
+          where: { id: req.user.id },
+          attributes: ['id']
+        }
+      ]
+    });
+
+    if (userTeam.length === 0) {
+      return res.status(403).json({ error: 'You are not participating in this match' });
+    }
+
+    const team = userTeam[0];
+
+    // Define cyber-warfare flags and their point values based on flag challenge IDs
+    const challengeFlags = {
+      // Basic challenges
+      'basic_flag_1': {
+        flags: ['CYBERWAR{basic_challenge_complete}', 'cyberwar{hello_world}'],
+        points: 50,
+        type: 'flag_capture'
+      },
+      'intermediate_flag_1': {
+        flags: ['CYBERWAR{intermediate_puzzle_solved}', 'cyberwar{security_basics}'],
+        points: 100,
+        type: 'flag_capture'
+      },
+
+      // Web challenges
+      'web_vuln_1': {
+        flags: ['CYBERWAR{web_shell_upload}', 'CYBERWAR{sql_injection}', 'cyberwar{xss_exploit}'],
+        points: 100,
+        type: 'vulnerability_exploit'
+      },
+
+      // Network challenges
+      'network_recon_1': {
+        flags: ['CYBERWAR{network_discovery}', 'CYBERWAR{port_scan_complete}', 'CYBERWAR{service_enumeration}'],
+        points: 150,
+        type: 'network_compromise'
+      },
+
+      // System challenges
+      'privilege_esc_1': {
+        flags: ['CYBERWAR{privilege_escalation}', 'CYBERWAR{system_access}', 'CYBERWAR{admin_credentials}'],
+        points: 200,
+        type: 'attack_success'
+      },
+
+      // Data challenges
+      'data_exfil_1': {
+        flags: ['CYBERWAR{sensitive_data_found}', 'CYBERWAR{database_compromised}', 'CYBERWAR{data_exfiltration}'],
+        points: 250,
+        type: 'lateral_movement'
+      }
+    };
+
+    const challengeData = challengeFlags[flagId];
+    if (!challengeData) {
+      return res.status(400).json({ 
+        error: 'Invalid flag challenge ID',
+        success: false 
+      });
+    }
+
+    // Check if flag value matches any of the accepted flags for this challenge
+    const submittedFlag = value.trim();
+    const isCorrect = challengeData.flags.some(acceptedFlag => 
+      acceptedFlag.toLowerCase() === submittedFlag.toLowerCase()
+    );
+
+    if (!isCorrect) {
+      return res.json({
+        success: false,
+        correct: false,
+        message: 'Incorrect flag value. Keep trying!',
+        points: 0
+      });
+    }
+
+    // Check for duplicate submission
+    const existingSubmission = await ScoringEvent.findOne({
+      where: {
+        matchId: req.params.id,
+        teamId: team.id,
+        challengeId: flagId,
+        eventType: challengeData.type,
+        isActive: true
+      }
+    });
+
+    if (existingSubmission) {
+      return res.status(409).json({
+        success: false,
+        message: 'Your team has already captured this flag',
+        alreadyCaptured: true
+      });
+    }
+
+    // Create scoring event for correct flag submission
+    const scoringEvent = await ScoringEvent.create({
+      matchId: req.params.id,
+      teamId: team.id,
+      userId: req.user.id,
+      eventType: challengeData.type,
+      eventSubtype: 'flag_submission',
+      challengeId: flagId,
+      challengeName: flagId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      basePoints: challengeData.points,
+      multiplier: 1.0,
+      finalPoints: challengeData.points,
+      eventDetails: {
+        flagId,
+        submittedFlag: submittedFlag,
+        challengeType: challengeData.type,
+        difficulty: flagId.includes('basic') ? 'beginner' : 
+                   flagId.includes('intermediate') ? 'intermediate' : 'advanced'
+      },
+      timestamp: new Date(),
+      isActive: true
+    });
+
+    // Update team score
+    const currentPoints = await ScoringEvent.sum('finalPoints', {
+      where: {
+        matchId: req.params.id,
+        teamId: team.id,
+        isActive: true
+      }
+    });
+
+    await team.update({ currentPoints: currentPoints || 0 });
+
+    res.json({
+      success: true,
+      correct: true,
+      message: `Correct flag! +${challengeData.points} points awarded to ${team.name}`,
+      points: challengeData.points,
+      totalPoints: currentPoints || 0,
+      flagId,
+      teamId: team.id
+    });
+
+  } catch (error) {
+    console.error('Error submitting flag:', error);
+    res.status(500).json({ error: 'Failed to submit flag' });
+  }
+});
+
+// Get match flags
+router.get('/:id/flags', authenticateToken, async (req, res) => {
+  try {
+    const match = await Match.findByPk(req.params.id, {
+      include: [
+        {
+          model: Flag,
+          as: 'matchFlags',
+          where: { isActive: true },
+          required: false,
+          include: [
+            {
+              model: Team,
+              as: 'capturingTeam',
+              attributes: ['id', 'name', 'color']
+            },
+            {
+              model: User,
+              as: 'capturingUser',
+              attributes: ['id', 'username']
+            }
+          ]
+        }
+      ]
+    });
+
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Format flags for frontend
+    const flags = match.matchFlags.map(flag => ({
+      id: flag.id,
+      name: flag.name,
+      description: flag.description,
+      category: flag.category,
+      points: flag.points,
+      difficulty: flag.difficulty,
+      hints: flag.hints || [],
+      captured: !!flag.capturedBy,
+      captureInfo: flag.capturedBy ? {
+        teamId: flag.capturedBy,
+        teamName: flag.capturingTeam?.name,
+        teamColor: flag.capturingTeam?.color,
+        capturedBy: flag.capturingUser?.username,
+        capturedAt: flag.capturedAt,
+        points: flag.points
+      } : null
+    }));
+
+    const capturedCount = flags.filter(f => f.captured).length;
+
+    res.json({ 
+      flags,
+      totalFlags: flags.length,
+      capturedFlags: capturedCount,
+      match: {
+        id: match.id,
+        name: match.name,
+        status: match.status
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching match flags:', error);
+    res.status(500).json({ error: 'Failed to fetch match flags' });
   }
 });
 

@@ -161,6 +161,23 @@ class CyberWarService {
   }
 
   /**
+   * Get user's team for a specific match
+   */
+  async getUserTeamForMatch(matchId) {
+    try {
+      const response = await axios.get(`/matches/${matchId}/user-team`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to fetch user team for match ${matchId}:`, error);
+      // Return null if user is not in a team for this match
+      if (error.response && error.response.status === 404) {
+        return null;
+      }
+      throw error;
+    }
+  }
+
+  /**
    * Get team statistics
    */
   async getTeamStats(teamId, timeRange = '30') {
@@ -281,6 +298,54 @@ class CyberWarService {
   }
 
   /**
+   * Update an existing match (admin only)
+   * @param {string|number} matchId - ID of the match to update
+   * @param {Object} matchData - Updated match data
+   * @returns {Promise<Object>} Updated match data
+   */
+  async updateMatch(matchId, matchData) {
+    try {
+      // Transform the frontend match data to match the backend's expected format
+      const formattedMatchData = {
+        name: matchData.name,
+        description: matchData.description,
+        matchType: matchData.matchType,
+        maxTeams: matchData.maxTeams,
+        startTime: matchData.startTime,
+        endTime: matchData.endTime,
+        status: matchData.status
+      };
+
+      console.log('Sending match update request:', formattedMatchData);
+      const response = await axios.put(`/admin/cyberwar/matches/${matchId}`, formattedMatchData);
+      
+      console.log('Match updated successfully:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to update match:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Delete a match (admin only)
+   * @param {string|number} matchId - ID of the match to delete
+   * @returns {Promise<Object>} Delete confirmation
+   */
+  async deleteMatch(matchId) {
+    try {
+      console.log('Sending match delete request for ID:', matchId);
+      const response = await axios.delete(`/admin/cyberwar/matches/${matchId}`);
+      
+      console.log('Match deleted successfully:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to delete match:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Start a match (admin only)
    */
   async startMatch(matchId) {
@@ -307,6 +372,61 @@ class CyberWarService {
   }
 
   /**
+   * Control match actions (start/pause/resume/stop)
+   */
+  async controlMatch(matchId, action) {
+    try {
+      let response;
+      switch (action) {
+        case 'start':
+          response = await axios.post(`/matches/${matchId}/start`);
+          break;
+        case 'pause':
+          response = await axios.post(`/matches/${matchId}/pause`);
+          break;
+        case 'resume':
+          response = await axios.post(`/matches/${matchId}/resume`);
+          break;
+        case 'stop':
+          response = await axios.post(`/matches/${matchId}/end`, { reason: 'admin_stopped' });
+          break;
+        default:
+          throw new Error(`Unknown action: ${action}`);
+      }
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to ${action} match ${matchId}:`, error);
+      throw error.response?.data || error;
+    }
+  }
+
+  /**
+   * Join a match with a team
+   */
+  async joinMatch(matchId, teamId) {
+    try {
+      const response = await axios.post(`/matches/${matchId}/join`, { teamId });
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to join match ${matchId} with team ${teamId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Leave a match
+   */
+  async leaveMatch(matchId) {
+    try {
+      const response = await axios.post(`/matches/${matchId}/leave`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to leave match ${matchId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
    * Add teams to match (admin only)
    */
   async addTeamsToMatch(matchId, teamIds) {
@@ -324,12 +444,25 @@ class CyberWarService {
   /**
    * Submit a cyber-warfare flag
    */
-  async submitFlag(flagData) {
+  async submitFlag(matchId, flagData) {
     try {
-      const response = await axios.post('/flags/cyberwar/submit', flagData);
+      const response = await axios.post(`/matches/${matchId}/flags/submit`, flagData);
       return response.data;
     } catch (error) {
       console.error('Failed to submit flag:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Control VM (start/stop/restart)
+   */
+  async controlVM(vmId, action) {
+    try {
+      const response = await axios.post(`/proxmox/vms/${vmId}/${action}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to ${action} VM ${vmId}:`, error);
       throw error;
     }
   }
@@ -339,10 +472,23 @@ class CyberWarService {
    */
   async getMatchScoreboard(matchId) {
     try {
-      const response = await axios.get(`/flags/match/${matchId}/scoreboard`);
+      const response = await axios.get(`/matches/${matchId}/scoreboard`);
       return response.data;
     } catch (error) {
       console.error(`Failed to fetch scoreboard for match ${matchId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get match flags
+   */
+  async getMatchFlags(matchId) {
+    try {
+      const response = await axios.get(`/matches/${matchId}/flags`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to fetch flags for match ${matchId}:`, error);
       throw error;
     }
   }
@@ -384,6 +530,70 @@ class CyberWarService {
       return response.data;
     } catch (error) {
       console.error('Failed to fetch admin stats:', error);
+      throw error;
+    }
+  }
+
+  // ===== FLAG MANAGEMENT (ADMIN) =====
+
+  /**
+   * Get all flags for admin
+   * @param {Object} filters - Optional filters like matchId
+   * @returns {Promise<Object>} Flags data
+   */
+  async getAdminFlags(filters = {}) {
+    try {
+      const params = new URLSearchParams(filters);
+      const response = await axios.get(`/admin/cyberwar/flags?${params}`);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch admin flags:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Create a new flag (admin only)
+   * @param {Object} flagData - Flag data
+   * @returns {Promise<Object>} Created flag data
+   */
+  async createFlag(flagData) {
+    try {
+      const response = await axios.post('/admin/cyberwar/flags', flagData);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to create flag:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Update an existing flag (admin only)
+   * @param {string|number} flagId - ID of the flag to update
+   * @param {Object} flagData - Updated flag data
+   * @returns {Promise<Object>} Updated flag data
+   */
+  async updateFlag(flagId, flagData) {
+    try {
+      const response = await axios.put(`/admin/cyberwar/flags/${flagId}`, flagData);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to update flag:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Delete a flag (admin only)
+   * @param {string|number} flagId - ID of the flag to delete
+   * @returns {Promise<Object>} Delete confirmation
+   */
+  async deleteFlag(flagId) {
+    try {
+      const response = await axios.delete(`/admin/cyberwar/flags/${flagId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to delete flag:', error);
       throw error;
     }
   }
@@ -482,15 +692,16 @@ class CyberWarService {
   }
 
   /**
-   * Get match VM assignments
+   * Get match VM assignments for current user's team
    */
   async getMatchVMAssignments(matchId) {
     try {
-      const response = await axios.get(`/proxmox/matches/${matchId}/assignments`);
+      const response = await axios.get(`/proxmox/matches/${matchId}/my-assignments`);
       return response.data;
     } catch (error) {
       console.error(`Failed to fetch VM assignments for match ${matchId}:`, error);
-      throw error;
+      // Return empty array if no VMs assigned yet
+      return { vms: [], totalVMs: 0 };
     }
   }
 
@@ -552,6 +763,53 @@ class CyberWarService {
     if (diffMins < 60) return `${diffMins}m ago`;
     if (diffHours < 24) return `${diffHours}h ago`;
     return `${diffDays}d ago`;
+  }
+
+  /**
+   * Get vulnerability statistics for admin dashboard
+   */
+  async getVulnerabilityStats() {
+    try {
+      // Mock data for now - replace with actual API call when available
+      return {
+        totalVulnerabilities: 25,
+        highSeverity: 8,
+        mediumSeverity: 12,
+        lowSeverity: 5,
+        recentDiscoveries: []
+      };
+    } catch (error) {
+      console.error('Failed to fetch vulnerability stats:', error);
+      throw error.response?.data || { error: 'Failed to fetch vulnerability stats' };
+    }
+  }
+
+  /**
+   * Export admin data in various formats
+   */
+  async exportAdminData(type) {
+    try {
+      // Mock implementation - replace with actual API call when available
+      console.log(`Exporting admin data of type: ${type}`);
+      return { message: `${type} data export initiated` };
+    } catch (error) {
+      console.error('Failed to export admin data:', error);
+      throw error.response?.data || { error: 'Failed to export admin data' };
+    }
+  }
+
+  /**
+   * Export scoreboard data
+   */
+  async exportScoreboard(matchId) {
+    try {
+      // Mock implementation - replace with actual API call when available
+      console.log(`Exporting scoreboard for match: ${matchId}`);
+      return { message: 'Scoreboard export initiated' };
+    } catch (error) {
+      console.error('Failed to export scoreboard:', error);
+      throw error.response?.data || { error: 'Failed to export scoreboard' };
+    }
   }
 }
 

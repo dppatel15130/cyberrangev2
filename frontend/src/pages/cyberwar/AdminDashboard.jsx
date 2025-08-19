@@ -64,6 +64,18 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
   
+  // Edit/Delete modals for matches
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedMatch, setSelectedMatch] = useState(null);
+  const [editFormData, setEditFormData] = useState({});
+
+  // Flag management modals
+  const [showEditFlagModal, setShowEditFlagModal] = useState(false);
+  const [showDeleteFlagModal, setShowDeleteFlagModal] = useState(false);
+  const [selectedFlag, setSelectedFlag] = useState(null);
+  const [editFlagFormData, setEditFlagFormData] = useState({});
+  
   // Show loading state while auth is being checked
   if (authLoading) {
     return (
@@ -84,8 +96,7 @@ const AdminDashboard = () => {
   // Modals
   const [showCreateMatch, setShowCreateMatch] = useState(false);
   const [showCreateFlag, setShowCreateFlag] = useState(false);
-  const [showVMControl, setShowVMControl] = useState(false);
-  const [showUserManagement, setShowUserManagement] = useState(false);
+
   
   // Form data
   const [newMatch, setNewMatch] = useState({
@@ -98,11 +109,13 @@ const AdminDashboard = () => {
   });
   
   const [newFlag, setNewFlag] = useState({
+    matchId: '',
     name: '',
     description: '',
     category: 'web',
-    value: '',
+    flagValue: '',
     points: 100,
+    difficulty: 'beginner',
     isActive: true
   });
   
@@ -199,11 +212,13 @@ useEffect(() => {
       await cyberwarService.createFlag(newFlag);
       setShowCreateFlag(false);
       setNewFlag({
+        matchId: '',
         name: '',
         description: '',
         category: 'web',
-        value: '',
+        flagValue: '',
         points: 100,
+        difficulty: 'beginner',
         isActive: true
       });
       fetchDashboardData();
@@ -223,6 +238,126 @@ useEffect(() => {
     }
   };
 
+  const handleEditMatch = (match) => {
+    setSelectedMatch(match);
+    
+    // Fix timezone issues by using local time
+    const formatDateTimeLocal = (dateString) => {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+    
+    setEditFormData({
+      name: match.name,
+      description: match.description,
+      matchType: match.matchType,
+      maxTeams: match.maxTeams,
+      duration: Math.round(match.duration / 60), // Convert seconds to minutes
+      startTime: formatDateTimeLocal(match.startTime),
+      endTime: formatDateTimeLocal(match.endTime),
+      status: match.status
+    });
+    setShowEditModal(true);
+  };
+
+  const handleUpdateMatch = async (e) => {
+    e.preventDefault();
+    try {
+      // Convert local times to UTC before sending to backend
+      const updateData = { ...editFormData };
+      
+      if (updateData.startTime) {
+        const localDate = new Date(updateData.startTime);
+        updateData.startTime = localDate.toISOString();
+      }
+      
+      if (updateData.endTime) {
+        const localDate = new Date(updateData.endTime);
+        updateData.endTime = localDate.toISOString();
+      }
+      
+      await cyberwarService.updateMatch(selectedMatch.id, updateData);
+      setShowEditModal(false);
+      setSelectedMatch(null);
+      setEditFormData({});
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to update match:', err);
+      setError('Failed to update match. Please try again.');
+    }
+  };
+
+  const handleDeleteMatch = (match) => {
+    setSelectedMatch(match);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDeleteMatch = async () => {
+    try {
+      await cyberwarService.deleteMatch(selectedMatch.id);
+      setShowDeleteModal(false);
+      setSelectedMatch(null);
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to delete match:', err);
+      setError('Failed to delete match. Please try again.');
+    }
+  };
+
+  // Flag management functions
+  const handleEditFlag = (flag) => {
+    setSelectedFlag(flag);
+    setEditFlagFormData({
+      name: flag.name,
+      description: flag.description,
+      flagValue: flag.flagValue,
+      points: flag.points,
+      category: flag.category,
+      difficulty: flag.difficulty,
+      hints: Array.isArray(flag.hints) ? flag.hints : 
+             typeof flag.hints === 'string' ? JSON.parse(flag.hints) : [],
+      isActive: flag.isActive
+    });
+    setShowEditFlagModal(true);
+  };
+
+  const handleUpdateFlag = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.updateFlag(selectedFlag.id, editFlagFormData);
+      setShowEditFlagModal(false);
+      setSelectedFlag(null);
+      setEditFlagFormData({});
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to update flag:', err);
+      setError('Failed to update flag. Please try again.');
+    }
+  };
+
+  const handleDeleteFlag = (flag) => {
+    setSelectedFlag(flag);
+    setShowDeleteFlagModal(true);
+  };
+
+  const confirmDeleteFlag = async () => {
+    try {
+      await cyberwarService.deleteFlag(selectedFlag.id);
+      setShowDeleteFlagModal(false);
+      setSelectedFlag(null);
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to delete flag:', err);
+      setError('Failed to delete flag. Please try again.');
+    }
+  };
+
   const handleVMAction = async (vmId, action) => {
     try {
       await cyberwarService.controlVM(vmId, action);
@@ -233,17 +368,7 @@ useEffect(() => {
     }
   };
 
-  const handleDeleteFlag = async (flagId) => {
-    if (window.confirm('Are you sure you want to delete this flag?')) {
-      try {
-        await cyberwarService.deleteFlag(flagId);
-        fetchDashboardData();
-      } catch (err) {
-        console.error('Failed to delete flag:', err);
-        setError('Failed to delete flag. Please try again.');
-      }
-    }
-  };
+
 
   const handleUserAction = async (userId, action) => {
     try {
@@ -277,8 +402,8 @@ useEffect(() => {
         return <Badge bg="success">Active</Badge>;
       case 'completed':
         return <Badge bg="secondary">Completed</Badge>;
-      case 'ready':
-        return <Badge bg="warning">Ready</Badge>;
+      case 'waiting':
+        return <Badge bg="warning">Waiting</Badge>;
       case 'draft':
         return <Badge bg="info">Draft</Badge>;
       default:
@@ -449,7 +574,7 @@ useEffect(() => {
                         </div>
                       </div>
                       <div className="d-flex gap-1">
-                        {match.status === 'ready' && (
+                        {match.status === 'waiting' && (
                           <Button size="sm" variant="success" onClick={() => handleMatchAction(match.id, 'start')}>
                             <FontAwesomeIcon icon={faPlay} />
                           </Button>
@@ -458,6 +583,16 @@ useEffect(() => {
                           <>
                             <Button size="sm" variant="warning" onClick={() => handleMatchAction(match.id, 'pause')}>
                               <FontAwesomeIcon icon={faPause} />
+                            </Button>
+                            <Button size="sm" variant="danger" onClick={() => handleMatchAction(match.id, 'stop')}>
+                              <FontAwesomeIcon icon={faStop} />
+                            </Button>
+                          </>
+                        )}
+                        {match.status === 'paused' && (
+                          <>
+                            <Button size="sm" variant="success" onClick={() => handleMatchAction(match.id, 'resume')}>
+                              <FontAwesomeIcon icon={faPlay} />
                             </Button>
                             <Button size="sm" variant="danger" onClick={() => handleMatchAction(match.id, 'stop')}>
                               <FontAwesomeIcon icon={faStop} />
@@ -515,11 +650,11 @@ useEffect(() => {
                     <FontAwesomeIcon icon={faFlag} className="me-2" />
                     Add Challenge Flag
                   </Button>
-                  <Button variant="outline-secondary" onClick={() => setShowVMControl(true)}>
+                  <Button variant="outline-secondary" onClick={() => setActiveTab('infrastructure')}>
                     <FontAwesomeIcon icon={faDesktop} className="me-2" />
                     VM Management
                   </Button>
-                  <Button variant="outline-info" onClick={() => setShowUserManagement(true)}>
+                  <Button variant="outline-info" onClick={() => setActiveTab('users')}>
                     <FontAwesomeIcon icon={faUserShield} className="me-2" />
                     User Management
                   </Button>
@@ -575,11 +710,11 @@ useEffect(() => {
                       </td>
                       <td>{getStatusBadge(match.status)}</td>
                       <td>{match.teams?.length || 0}/{match.maxTeams}</td>
-                      <td>{match.duration} minutes</td>
+                      <td>{Math.round(match.duration / 60)} minutes</td>
                       <td>{new Date(match.createdAt).toLocaleDateString()}</td>
                       <td>
                         <div className="d-flex gap-1">
-                          {match.status === 'ready' && (
+                          {match.status === 'waiting' && (
                             <Button size="sm" variant="success" onClick={() => handleMatchAction(match.id, 'start')}>
                               <FontAwesomeIcon icon={faPlay} />
                             </Button>
@@ -594,8 +729,30 @@ useEffect(() => {
                               </Button>
                             </>
                           )}
+                          {match.status === 'paused' && (
+                            <>
+                              <Button size="sm" variant="success" onClick={() => handleMatchAction(match.id, 'resume')}>
+                                <FontAwesomeIcon icon={faPlay} />
+                              </Button>
+                              <Button size="sm" variant="danger" onClick={() => handleMatchAction(match.id, 'stop')}>
+                                <FontAwesomeIcon icon={faStop} />
+                              </Button>
+                            </>
+                          )}
                           <Button size="sm" variant="outline-primary" onClick={() => navigate(`/cyberwar/match/${match.id}/scoreboard`)}>
                             <FontAwesomeIcon icon={faEye} />
+                          </Button>
+                          <Button size="sm" variant="outline-warning" onClick={() => handleEditMatch(match)} title="Edit Match">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline-danger" 
+                            onClick={() => handleDeleteMatch(match)} 
+                            title="Delete Match"
+                            disabled={match.status === 'active'}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
                           </Button>
                         </div>
                       </td>
@@ -648,10 +805,21 @@ useEffect(() => {
                       <td>{flag.captures || 0}</td>
                       <td>
                         <div className="d-flex gap-1">
-                          <Button size="sm" variant="outline-primary">
+                          <Button 
+                            size="sm" 
+                            variant="outline-warning" 
+                            onClick={() => handleEditFlag(flag)}
+                            title="Edit Flag"
+                          >
                             <FontAwesomeIcon icon={faEdit} />
                           </Button>
-                          <Button size="sm" variant="outline-danger" onClick={() => handleDeleteFlag(flag.id)}>
+                          <Button 
+                            size="sm" 
+                            variant="outline-danger" 
+                            onClick={() => handleDeleteFlag(flag)}
+                            title="Delete Flag"
+                            disabled={flag.capturedBy}
+                          >
                             <FontAwesomeIcon icon={faTrash} />
                           </Button>
                         </div>
@@ -774,8 +942,8 @@ useEffect(() => {
                       <td><strong>{user.username}</strong></td>
                       <td>{user.email}</td>
                       <td>
-                        <Badge bg={user.isAdmin ? 'danger' : 'primary'}>
-                          {user.isAdmin ? 'Admin' : 'User'}
+                        <Badge bg={user.role === 'admin' ? 'danger' : 'primary'}>
+                          {user.role === 'admin' ? 'Admin' : 'User'}
                         </Badge>
                       </td>
                       <td>
@@ -881,6 +1049,27 @@ useEffect(() => {
         <Modal.Body>
           <Form onSubmit={handleCreateFlag}>
             <Form.Group className="mb-3">
+              <Form.Label>Select Match *</Form.Label>
+              <Form.Select 
+                value={newFlag.matchId}
+                onChange={(e) => setNewFlag({...newFlag, matchId: e.target.value})}
+                required
+              >
+                <option value="">Choose a match...</option>
+                {matches.map(match => (
+                  <option key={match.id} value={match.id}>
+                    {match.name} ({match.status})
+                  </option>
+                ))}
+              </Form.Select>
+              {matches.length === 0 && (
+                <Form.Text className="text-muted">
+                  No matches available. Please create a match first.
+                </Form.Text>
+              )}
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
               <Form.Label>Flag Name *</Form.Label>
               <Form.Control 
                 type="text"
@@ -901,7 +1090,7 @@ useEffect(() => {
             </Form.Group>
             
             <Row>
-              <Col md={6}>
+              <Col md={4}>
                 <Form.Group className="mb-3">
                   <Form.Label>Category *</Form.Label>
                   <Form.Select 
@@ -917,7 +1106,7 @@ useEffect(() => {
                   </Form.Select>
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
                 <Form.Group className="mb-3">
                   <Form.Label>Points *</Form.Label>
                   <Form.Control 
@@ -931,15 +1120,28 @@ useEffect(() => {
                   />
                 </Form.Group>
               </Col>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Difficulty</Form.Label>
+                  <Form.Select 
+                    value={newFlag.difficulty || 'beginner'}
+                    onChange={(e) => setNewFlag({...newFlag, difficulty: e.target.value})}
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
             </Row>
             
             <Form.Group className="mb-3">
               <Form.Label>Flag Value *</Form.Label>
               <Form.Control 
                 type="text"
-                value={newFlag.value}
-                onChange={(e) => setNewFlag({...newFlag, value: e.target.value})}
-                placeholder="flag{example_value}"
+                value={newFlag.flagValue || ''}
+                onChange={(e) => setNewFlag({...newFlag, flagValue: e.target.value})}
+                placeholder="CYBERWAR{example_value}"
                 required
               />
             </Form.Group>
@@ -962,6 +1164,357 @@ useEffect(() => {
             </div>
           </Form>
         </Modal.Body>
+      </Modal>
+
+      {/* Edit Match Modal */}
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faEdit} className="me-2" />
+            Edit Match
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleUpdateMatch}>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Match Name *</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={editFormData.name || ''}
+                    onChange={(e) => setEditFormData({...editFormData, name: e.target.value})}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Match Type *</Form.Label>
+                  <Form.Select 
+                    value={editFormData.matchType || ''}
+                    onChange={(e) => setEditFormData({...editFormData, matchType: e.target.value})}
+                  >
+                    <option value="capture_flag">Capture The Flag</option>
+                    <option value="red_vs_blue">Red vs Blue</option>
+                    <option value="attack_defend">Attack & Defend</option>
+                    <option value="king_of_hill">King of the Hill</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={editFormData.description || ''}
+                onChange={(e) => setEditFormData({...editFormData, description: e.target.value})}
+              />
+            </Form.Group>
+
+            <Row>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Max Teams</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="2"
+                    max="20"
+                    value={editFormData.maxTeams || ''}
+                    onChange={(e) => setEditFormData({...editFormData, maxTeams: parseInt(e.target.value)})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Duration (minutes)</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="30"
+                    max="480"
+                    value={editFormData.duration || ''}
+                    onChange={(e) => setEditFormData({...editFormData, duration: parseInt(e.target.value)})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Status</Form.Label>
+                  <Form.Select 
+                    value={editFormData.status || ''}
+                    onChange={(e) => setEditFormData({...editFormData, status: e.target.value})}
+                  >
+                    <option value="setup">Setup</option>
+                    <option value="waiting">Waiting</option>
+                    <option value="active">Active</option>
+                    <option value="paused">Paused</option>
+                    <option value="finished">Finished</option>
+                    <option value="cancelled">Cancelled</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Start Time</Form.Label>
+                  <Form.Control 
+                    type="datetime-local"
+                    value={editFormData.startTime || ''}
+                    onChange={(e) => setEditFormData({...editFormData, startTime: e.target.value})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>End Time</Form.Label>
+                  <Form.Control 
+                    type="datetime-local"
+                    value={editFormData.endTime || ''}
+                    onChange={(e) => setEditFormData({...editFormData, endTime: e.target.value})}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button variant="secondary" onClick={() => setShowEditModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                Update Match
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Delete Match Confirmation Modal */}
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faTrash} className="me-2 text-danger" />
+            Delete Match
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Alert variant="warning">
+            <FontAwesomeIcon icon={faExclamationTriangle} className="me-2" />
+            <strong>Warning:</strong> This action cannot be undone!
+          </Alert>
+          
+          {selectedMatch && (
+            <div>
+              <p>Are you sure you want to delete the match:</p>
+              <div className="bg-light p-3 rounded">
+                <h6 className="mb-1">{selectedMatch.name}</h6>
+                <p className="text-muted mb-0">{selectedMatch.description}</p>
+                <div className="mt-2">
+                  {getStatusBadge(selectedMatch.status)}
+                  <Badge bg="info" className="ms-2">{selectedMatch.teams?.length || 0} teams</Badge>
+                </div>
+              </div>
+              <p className="mt-3 mb-0">
+                This will permanently delete the match and all associated data including scores, events, and team assignments.
+              </p>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={confirmDeleteMatch}>
+            <FontAwesomeIcon icon={faTrash} className="me-1" />
+            Delete Match
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Edit Flag Modal */}
+      <Modal show={showEditFlagModal} onHide={() => setShowEditFlagModal(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faEdit} className="me-2" />
+            Edit Flag
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleUpdateFlag}>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Flag Name *</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={editFlagFormData.name || ''}
+                    onChange={(e) => setEditFlagFormData({...editFlagFormData, name: e.target.value})}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Category *</Form.Label>
+                  <Form.Select 
+                    value={editFlagFormData.category || ''}
+                    onChange={(e) => setEditFlagFormData({...editFlagFormData, category: e.target.value})}
+                  >
+                    <option value="web">Web Security</option>
+                    <option value="network">Network</option>
+                    <option value="crypto">Cryptography</option>
+                    <option value="forensics">Forensics</option>
+                    <option value="reversing">Reverse Engineering</option>
+                    <option value="pwn">Binary Exploitation</option>
+                    <option value="misc">Miscellaneous</option>
+                    <option value="osint">OSINT</option>
+                    <option value="steganography">Steganography</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={editFlagFormData.description || ''}
+                onChange={(e) => setEditFlagFormData({...editFlagFormData, description: e.target.value})}
+              />
+            </Form.Group>
+
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Flag Value *</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={editFlagFormData.flagValue || ''}
+                    onChange={(e) => setEditFlagFormData({...editFlagFormData, flagValue: e.target.value})}
+                    placeholder="CYBERWAR{flag_value}"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Points *</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="1"
+                    max="1000"
+                    value={editFlagFormData.points || ''}
+                    onChange={(e) => setEditFlagFormData({...editFlagFormData, points: parseInt(e.target.value)})}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Difficulty</Form.Label>
+                  <Form.Select 
+                    value={editFlagFormData.difficulty || ''}
+                    onChange={(e) => setEditFlagFormData({...editFlagFormData, difficulty: e.target.value})}
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Hints (one per line)</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={Array.isArray(editFlagFormData.hints) ? editFlagFormData.hints.join('\n') : ''}
+                onChange={(e) => setEditFlagFormData({
+                  ...editFlagFormData, 
+                  hints: e.target.value.split('\n').filter(hint => hint.trim())
+                })}
+                placeholder="Enter hints for teams, one per line"
+              />
+            </Form.Group>
+
+            <Form.Check 
+              type="checkbox"
+              label="Active"
+              checked={editFlagFormData.isActive || false}
+              onChange={(e) => setEditFlagFormData({...editFlagFormData, isActive: e.target.checked})}
+              className="mb-3"
+            />
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button variant="secondary" onClick={() => setShowEditFlagModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                Update Flag
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Delete Flag Confirmation Modal */}
+      <Modal show={showDeleteFlagModal} onHide={() => setShowDeleteFlagModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faTrash} className="me-2 text-danger" />
+            Delete Flag
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Alert variant="warning">
+            <FontAwesomeIcon icon={faExclamationTriangle} className="me-2" />
+            <strong>Warning:</strong> This action cannot be undone!
+          </Alert>
+          
+          {selectedFlag && (
+            <div>
+              <p>Are you sure you want to delete the flag:</p>
+              <div className="bg-light p-3 rounded">
+                <h6 className="mb-1">{selectedFlag.name}</h6>
+                <p className="text-muted mb-1">{selectedFlag.description}</p>
+                <div className="mt-2">
+                  <Badge bg="info" className="me-2">{selectedFlag.category}</Badge>
+                  <Badge bg="secondary" className="me-2">{selectedFlag.points} pts</Badge>
+                  <Badge bg={selectedFlag.difficulty === 'beginner' ? 'success' : 
+                           selectedFlag.difficulty === 'intermediate' ? 'warning' : 'danger'}>
+                    {selectedFlag.difficulty}
+                  </Badge>
+                </div>
+              </div>
+              <p className="mt-3 mb-0">
+                <strong>Flag Value:</strong> <code>{selectedFlag.flagValue}</code>
+              </p>
+              {selectedFlag.capturedBy && (
+                <Alert variant="danger" className="mt-3">
+                  <strong>Cannot delete:</strong> This flag has been captured by a team.
+                </Alert>
+              )}
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteFlagModal(false)}>
+            Cancel
+          </Button>
+          <Button 
+            variant="danger" 
+            onClick={confirmDeleteFlag}
+            disabled={selectedFlag?.capturedBy}
+          >
+            <FontAwesomeIcon icon={faTrash} className="me-1" />
+            Delete Flag
+          </Button>
+        </Modal.Footer>
       </Modal>
     </Container>
   );

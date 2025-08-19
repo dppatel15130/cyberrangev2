@@ -166,6 +166,17 @@ class ScoringService {
     }
   }
 
+  // Start log analysis for a match
+  async startLogAnalysis(matchId) {
+    try {
+      console.log(`Starting log analysis for match ${matchId}`);
+      // For now, just log that log analysis is enabled
+      // This can be expanded later to actually monitor log files
+    } catch (error) {
+      console.error('Error starting log analysis:', error);
+    }
+  }
+
   // Analyze packet capture files for scoring events
   async analyzePcapFiles(matchId) {
     try {

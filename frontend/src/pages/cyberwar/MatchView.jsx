@@ -42,7 +42,8 @@ import {
   faPaperPlane,
   faDownload,
   faBug,
-  faLightbulb
+  faLightbulb,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext';
 import cyberwarService from '../../services/cyberwarService';
@@ -81,10 +82,13 @@ const MatchView = () => {
   const [toasts, setToasts] = useState([]);
 
   // WebSocket for real-time updates
-  const wsUrl = `ws://localhost:5000/ws/match/${matchId}`;
+  const wsUrl = `ws://localhost:5000/ws/scoring`;
   const { lastMessage, isConnected, sendMessage } = useWebSocket(wsUrl, {
     onMessage: (data) => {
-      handleWebSocketMessage(data);
+      // Only handle messages for this specific match
+      if (data.matchId === parseInt(matchId)) {
+        handleWebSocketMessage(data);
+      }
     }
   });
 
@@ -341,23 +345,45 @@ const MatchView = () => {
             </div>
             
             <div className="text-end">
-              {matchStatus === 'active' && (
-                <div>
-                  <h2 className="mb-0 text-danger">
-                    <FontAwesomeIcon icon={faClock} className="me-2" />
-                    {formatTime(timeRemaining)}
-                  </h2>
-                  <small className="text-muted">Time Remaining</small>
-                </div>
-              )}
-              {matchStatus === 'completed' && (
-                <div>
-                  <h3 className="mb-0 text-secondary">
-                    <FontAwesomeIcon icon={faStop} className="me-2" />
-                    Match Complete
-                  </h3>
-                </div>
-              )}
+              <div className="d-flex flex-column align-items-end gap-2">
+                {matchStatus === 'active' && (
+                  <div>
+                    <h2 className="mb-0 text-danger">
+                      <FontAwesomeIcon icon={faClock} className="me-2" />
+                      {formatTime(timeRemaining)}
+                    </h2>
+                    <small className="text-muted">Time Remaining</small>
+                  </div>
+                )}
+                {matchStatus === 'completed' && (
+                  <div>
+                    <h3 className="mb-0 text-secondary">
+                      <FontAwesomeIcon icon={faStop} className="me-2" />
+                      Match Complete
+                    </h3>
+                  </div>
+                )}
+                {(matchStatus === 'waiting' || matchStatus === 'setup') && (
+                  <Button 
+                    variant="outline-danger" 
+                    size="sm"
+                    onClick={async () => {
+                      if (window.confirm('Are you sure you want to leave this match?')) {
+                        try {
+                          await cyberwarService.leaveMatch(matchId);
+                          navigate('/cyberwar/lobby');
+                        } catch (err) {
+                          console.error('Failed to leave match:', err);
+                          setError('Failed to leave match. Please try again.');
+                        }
+                      }
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faSignOutAlt} className="me-1" />
+                    Leave Match
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </Col>
@@ -384,7 +410,7 @@ const MatchView = () => {
                         <FontAwesomeIcon icon={faFlag} className="me-2" />
                         Capture the Flag
                       </span>
-                      <Badge bg="info">{flags.filter(f => f.capturedBy === userTeam.id).length}/{flags.length}</Badge>
+                      <Badge bg="info">{flags.filter(f => f.captured && f.captureInfo?.teamId === userTeam?.id).length}/{flags.length}</Badge>
                     </Card.Header>
                     <Card.Body style={{ maxHeight: '400px', overflowY: 'auto' }}>
                       {flags.length === 0 ? (
@@ -402,15 +428,15 @@ const MatchView = () => {
                                   )}
                                 </div>
                                 <div>
-                                  {flag.capturedBy === userTeam.id ? (
+                                  {flag.captured && flag.captureInfo?.teamId === userTeam?.id ? (
                                     <Badge bg="success">
                                       <FontAwesomeIcon icon={faCheckCircle} className="me-1" />
                                       Captured
                                     </Badge>
-                                  ) : flag.capturedBy ? (
+                                  ) : flag.captured ? (
                                     <Badge bg="danger">
                                       <FontAwesomeIcon icon={faTimesCircle} className="me-1" />
-                                      Taken
+                                      Taken by {flag.captureInfo?.teamName}
                                     </Badge>
                                   ) : (
                                     <Button 
@@ -420,7 +446,7 @@ const MatchView = () => {
                                         setSelectedFlag(flag);
                                         setShowFlagSubmission(true);
                                       }}
-                                      disabled={matchStatus !== 'active'}
+                                      disabled={match?.status !== 'active'}
                                     >
                                       Submit
                                     </Button>
