@@ -120,7 +120,16 @@ const MatchLobby = () => {
       fetchData(); // Refresh data
     } catch (err) {
       console.error('Failed to create team:', err);
-      setError('Failed to create team. Please try again.');
+      
+      // Check if it's a team name already exists error
+      if (err.error && err.error.includes('already exists')) {
+        setError(`Team name "${newTeamData.name}" already exists. You can either:
+          • Try a different team name
+          • Join the existing team using the "Join Existing Team" button
+          • Contact an administrator if you believe this is an error`);
+      } else {
+        setError('Failed to create team. Please try again.');
+      }
     }
   };
 

@@ -1,5 +1,7 @@
 const { Match, User, Team } = require('../models');
 const { Op } = require('sequelize');
+const vulnerabilityDetectionService = require('../services/vulnerabilityDetectionService');
+const elkIntegrationService = require('../services/elkIntegrationService');
 
 /**
  * Create a new match
@@ -177,16 +179,29 @@ exports.startMatch = async (req, res) => {
       return res.status(404).json({ error: 'Match not found' });
     }
 
-    if (match.status !== 'setup') {
-      return res.status(400).json({ error: 'Match is not in setup status' });
+    if (match.status !== 'setup' && match.status !== 'waiting') {
+      return res.status(400).json({ error: 'Match is not in setup or waiting status' });
     }
 
-    match.status = 'waiting';
+    // Update match status to active
+    match.status = 'active';
+    match.actualStartTime = new Date();
     await match.save();
 
-    // TODO: Add logic to prepare VMs, networks, etc.
+    // Initialize automated scoring if enabled
+    if (match.autoScoring) {
+      console.log(`Starting automated scoring for match ${id}`);
+      
+      // Start vulnerability detection
+      await vulnerabilityDetectionService.startDetection(id);
+      
+      // Initialize ELK integration if enabled
+      if (match.elkIntegration) {
+        await elkIntegrationService.initializeMatch(id);
+      }
+    }
 
-    res.json({ message: 'Match started successfully', match });
+    res.json({ message: 'Match started successfully with automated scoring', match });
   } catch (error) {
     console.error('Error starting match:', error);
     res.status(500).json({ error: 'Failed to start match' });
@@ -208,6 +223,12 @@ exports.endMatch = async (req, res) => {
 
     if (match.status === 'finished' || match.status === 'cancelled') {
       return res.status(400).json({ error: 'Match is already ended' });
+    }
+
+    // Stop automated scoring if active
+    if (match.autoScoring) {
+      console.log(`Stopping automated scoring for match ${id}`);
+      vulnerabilityDetectionService.stopDetection(id);
     }
 
     match.status = 'finished';

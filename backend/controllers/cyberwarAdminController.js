@@ -131,19 +131,45 @@ exports.getAdminVMs = async (req, res) => {
  */
 exports.getAdminStats = async (req, res) => {
   try {
-    // For now, return dummy data until you implement the actual models
+    // Get real statistics from the database
+    const [
+      totalMatches,
+      activeMatches,
+      completedMatches,
+      totalTeams,
+      totalUsers,
+      totalFlags,
+      activeFlags,
+      capturedFlags,
+      totalVMs,
+      runningVMs,
+      stoppedVMs
+    ] = await Promise.all([
+      Match.count(),
+      Match.count({ where: { status: 'active' } }),
+      Match.count({ where: { status: 'finished' } }),
+      Team.count(),
+      User.count(),
+      Flag.count(),
+      Flag.count({ where: { isActive: true } }),
+      Flag.count({ where: { capturedBy: { [Op.ne]: null } } }),
+      VM.count(),
+      VM.count({ where: { status: 'running' } }),
+      VM.count({ where: { status: 'stopped' } })
+    ]);
+
     const stats = {
-      totalMatches: 0,
-      activeMatches: 0,
-      completedMatches: 0,
-      totalTeams: 0,
-      totalUsers: 0,
-      totalFlags: 0,
-      activeFlags: 0,
-      capturedFlags: 0,
-      totalVMs: 0,
-      runningVMs: 0,
-      stoppedVMs: 0,
+      totalMatches,
+      activeMatches,
+      completedMatches,
+      totalTeams,
+      totalUsers,
+      totalFlags,
+      activeFlags,
+      capturedFlags,
+      totalVMs,
+      runningVMs,
+      stoppedVMs,
       alerts: [
         {
           type: 'info',
@@ -151,11 +177,6 @@ exports.getAdminStats = async (req, res) => {
         }
       ]
     };
-    
-    // You can add real data fetching here when you have the models:
-    // const totalUsers = await User.count();
-    // const totalVMs = await VM.count();
-    // etc.
     
     res.json(stats);
   } catch (error) {

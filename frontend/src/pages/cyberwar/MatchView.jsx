@@ -49,6 +49,33 @@ import { AuthContext } from '../../context/AuthContext';
 import cyberwarService from '../../services/cyberwarService';
 import useWebSocket from '../../hooks/useWebSocket';
 
+// Custom styles for better table visibility
+const tableStyles = `
+  .table-dark {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  .table-dark thead th {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody tr {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+  }
+  .table-dark tbody tr:hover {
+    background-color: #2d2d2d !important;
+  }
+  .table-dark tbody td {
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody td small {
+    color: #b0b0b0 !important;
+  }
+`;
+
 const MatchView = () => {
   const { matchId } = useParams();
   const { user } = useContext(AuthContext);
@@ -322,7 +349,9 @@ const MatchView = () => {
   }
 
   return (
-    <Container fluid className="py-3">
+    <>
+      <style>{tableStyles}</style>
+      <Container fluid className="py-3">
       {/* Header */}
       <Row className="mb-4">
         <Col>
@@ -545,7 +574,7 @@ const MatchView = () => {
                   Live Scoreboard
                 </Card.Header>
                 <Card.Body>
-                  <Table responsive striped>
+                  <Table responsive striped className="table-dark">
                     <thead>
                       <tr>
                         <th>Rank</th>
@@ -811,7 +840,8 @@ const MatchView = () => {
           }
         }
       `}</style>
-    </Container>
+      </Container>
+    </>
   );
 };
 

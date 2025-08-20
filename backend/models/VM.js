@@ -36,7 +36,7 @@ const VM = sequelize.define('VM', {
     allowNull: true
   },
   status: {
-    type: DataTypes.ENUM('creating', 'running', 'stopped', 'error'),
+    type: DataTypes.ENUM('creating', 'running', 'stopped', 'error', 'assigned'),
     defaultValue: 'creating',
     allowNull: false
   },
@@ -52,6 +52,48 @@ const VM = sequelize.define('VM', {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  isTarget: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
+  isAttacker: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
+  assignedTo: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: 'Users',
+      key: 'id'
+    }
+  },
+  assignedAt: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  guacamoleUrl: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  guacamoleConfig: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
 }, {
   timestamps: true

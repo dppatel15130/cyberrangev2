@@ -3,6 +3,8 @@ const { Match, Team, User, ScoringEvent, Flag } = require('../models');
 const { auth: authenticateToken, admin: requireAdmin } = require('../middleware/auth');
 const gameEngine = require('../services/gameEngine');
 const scoringService = require('../services/scoringService');
+const guacamoleService = require('../services/guacamoleService');
+const vmAssignmentService = require('../services/vmAssignmentService');
 const router = express.Router();
 
 // Get all matches with optional filtering
@@ -402,6 +404,38 @@ router.post('/:id/join', authenticateToken, async (req, res) => {
     // Update current teams count
     await match.update({ currentTeams: currentTeamCount + 1 });
 
+    // Setup Guacamole access for team members
+    try {
+      console.log(`Setting up Guacamole access for team ${team.name} (ID: ${team.id})`);
+      const guacamoleResult = await guacamoleService.setupTeamAccess(team.id);
+      
+      if (guacamoleResult.success) {
+        console.log(`✅ Guacamole access configured for team ${team.name}`);
+        console.log('Results:', guacamoleResult.results);
+      } else {
+        console.warn(`⚠️  Failed to setup Guacamole access for team ${team.name}:`, guacamoleResult.error);
+      }
+    } catch (guacamoleError) {
+      console.error(`❌ Error setting up Guacamole access:`, guacamoleError);
+      // Don't fail the join process if Guacamole setup fails
+    }
+
+    // Assign VMs to team members
+    try {
+      console.log(`Assigning VMs to team ${team.name} (ID: ${team.id})`);
+      const vmResult = await vmAssignmentService.assignVMsToTeam(team.id, match.id);
+      
+      if (vmResult.success) {
+        console.log(`✅ VMs assigned to team ${team.name}`);
+        console.log('Assigned VMs:', vmResult.assignedVMs);
+      } else {
+        console.warn(`⚠️  Failed to assign VMs to team ${team.name}:`, vmResult.error);
+      }
+    } catch (vmError) {
+      console.error(`❌ Error assigning VMs:`, vmError);
+      // Don't fail the join process if VM assignment fails
+    }
+
     res.json({
       message: 'Successfully joined match',
       match: await Match.findByPk(match.id, {
@@ -536,6 +570,29 @@ router.post('/:id/start', authenticateToken, requireAdmin, async (req, res) => {
       return res.status(400).json({ 
         error: `Match is not ready to start. Current status: ${match.status}` 
       });
+    }
+
+    // Initialize VM assignment service
+    try {
+      await vmAssignmentService.initializeVMPool();
+      console.log(`✅ VM assignment service initialized for match ${match.id}`);
+    } catch (vmError) {
+      console.warn(`⚠️  VM assignment service error:`, vmError.message);
+    }
+
+    // Assign VMs to all teams in the match
+    try {
+      const teams = await match.getTeams();
+      for (const team of teams) {
+        const vmResult = await vmAssignmentService.assignVMsToTeam(team.id, match.id);
+        if (vmResult.success) {
+          console.log(`✅ VMs assigned to team ${team.name} for active match`);
+        } else {
+          console.warn(`⚠️  Failed to assign VMs to team ${team.name}:`, vmResult.error);
+        }
+      }
+    } catch (vmError) {
+      console.warn(`⚠️  Error assigning VMs for active match:`, vmError.message);
     }
 
     // Start the match using game engine
@@ -1225,6 +1282,140 @@ router.delete('/:id', authenticateToken, requireAdmin, async (req, res) => {
   } catch (error) {
     console.error('Error deleting match:', error);
     res.status(500).json({ error: 'Failed to delete match' });
+  }
+});
+
+// Setup Guacamole access for a specific user
+router.post('/:id/setup-guacamole/:userId', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const { id: matchId, userId } = req.params;
+    
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const match = await Match.findByPk(matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    console.log(`Setting up Guacamole access for user ${user.username} in match ${matchId}`);
+    
+    const result = await guacamoleService.setupUserAccess(user);
+    
+    if (result.success) {
+      res.json({
+        message: 'Guacamole access configured successfully',
+        credentials: result.credentials
+      });
+    } else {
+      res.status(500).json({ error: 'Failed to setup Guacamole access', details: result.error });
+    }
+  } catch (error) {
+    console.error('Error setting up Guacamole access:', error);
+    res.status(500).json({ error: 'Failed to setup Guacamole access' });
+  }
+});
+
+// Setup Guacamole access for all team members
+router.post('/:id/setup-team-guacamole/:teamId', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const { id: matchId, teamId } = req.params;
+    
+    const match = await Match.findByPk(matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    console.log(`Setting up Guacamole access for team ${teamId} in match ${matchId}`);
+    
+    const result = await guacamoleService.setupTeamAccess(teamId);
+    
+    if (result.success) {
+      res.json({
+        message: 'Team Guacamole access configured successfully',
+        teamName: result.teamName,
+        results: result.results
+      });
+    } else {
+      res.status(500).json({ error: 'Failed to setup team Guacamole access', details: result.error });
+    }
+  } catch (error) {
+    console.error('Error setting up team Guacamole access:', error);
+    res.status(500).json({ error: 'Failed to setup team Guacamole access' });
+  }
+});
+
+// Test Guacamole connectivity
+router.get('/test-guacamole', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const result = await guacamoleService.testConnection();
+    
+    if (result.success) {
+      res.json({
+        message: 'Guacamole connection test successful',
+        status: result.status
+      });
+    } else {
+      res.status(500).json({ error: 'Guacamole connection test failed', details: result.error });
+    }
+  } catch (error) {
+    console.error('Error testing Guacamole connection:', error);
+    res.status(500).json({ error: 'Failed to test Guacamole connection' });
+  }
+});
+
+// Get VMs assigned to current user in a match
+router.get('/:id/my-vms', authenticateToken, async (req, res) => {
+  try {
+    const matchId = req.params.id;
+    const userId = req.user.id;
+
+    const vms = await vmAssignmentService.getUserVMs(userId, matchId);
+    
+    res.json({
+      success: true,
+      vms: vms,
+      count: vms.length
+    });
+  } catch (error) {
+    console.error('Error getting user VMs:', error);
+    res.status(500).json({ error: 'Failed to get user VMs' });
+  }
+});
+
+// Get VMs assigned to a team in a match
+router.get('/:id/team/:teamId/vms', authenticateToken, async (req, res) => {
+  try {
+    const matchId = req.params.id;
+    const teamId = req.params.teamId;
+
+    const vms = await vmAssignmentService.getTeamVMs(teamId, matchId);
+    
+    res.json({
+      success: true,
+      vms: vms,
+      count: vms.length
+    });
+  } catch (error) {
+    console.error('Error getting team VMs:', error);
+    res.status(500).json({ error: 'Failed to get team VMs' });
+  }
+});
+
+// Get VM pool status (admin only)
+router.get('/vm-pool-status', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const status = vmAssignmentService.getVMPoolStatus();
+    
+    res.json({
+      success: true,
+      status: status
+    });
+  } catch (error) {
+    console.error('Error getting VM pool status:', error);
+    res.status(500).json({ error: 'Failed to get VM pool status' });
   }
 });
 

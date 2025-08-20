@@ -44,10 +44,38 @@ import {
   faTrophy,
   faHistory,
   faClipboardList,
-  faUserShield
+  faUserShield,
+  faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext';
 import cyberwarService from '../../services/cyberwarService';
+
+// Custom styles for better table visibility
+const tableStyles = `
+  .table-dark {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  .table-dark thead th {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody tr {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+  }
+  .table-dark tbody tr:hover {
+    background-color: #2d2d2d !important;
+  }
+  .table-dark tbody td {
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody td small {
+    color: #b0b0b0 !important;
+  }
+`;
 
 const AdminDashboard = () => {
   const { user, loading: authLoading } = useContext(AuthContext);
@@ -75,6 +103,14 @@ const AdminDashboard = () => {
   const [showDeleteFlagModal, setShowDeleteFlagModal] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(null);
   const [editFlagFormData, setEditFlagFormData] = useState({});
+
+  // Team management modals
+  const [showEditTeamModal, setShowEditTeamModal] = useState(false);
+  const [showDeleteTeamModal, setShowDeleteTeamModal] = useState(false);
+  const [showAddMemberModal, setShowAddMemberModal] = useState(false);
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [editTeamFormData, setEditTeamFormData] = useState({});
+  const [newMemberData, setNewMemberData] = useState({ userId: '', role: 'member' });
   
   // Show loading state while auth is being checked
   if (authLoading) {
@@ -96,6 +132,7 @@ const AdminDashboard = () => {
   // Modals
   const [showCreateMatch, setShowCreateMatch] = useState(false);
   const [showCreateFlag, setShowCreateFlag] = useState(false);
+  const [showCreateTeam, setShowCreateTeam] = useState(false);
 
   
   // Form data
@@ -116,6 +153,15 @@ const AdminDashboard = () => {
     flagValue: '',
     points: 100,
     difficulty: 'beginner',
+    isActive: true
+  });
+
+  const [newTeam, setNewTeam] = useState({
+    name: '',
+    description: '',
+    color: '#007bff',
+    maxMembers: 4,
+    isPublic: true,
     isActive: true
   });
   
@@ -225,6 +271,26 @@ useEffect(() => {
     } catch (err) {
       console.error('Failed to create flag:', err);
       setError('Failed to create flag. Please try again.');
+    }
+  };
+
+  const handleCreateTeam = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.createTeam(newTeam);
+      setShowCreateTeam(false);
+      setNewTeam({
+        name: '',
+        description: '',
+        color: '#007bff',
+        maxMembers: 4,
+        isPublic: true,
+        isActive: true
+      });
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to create team:', err);
+      setError('Failed to create team. Please try again.');
     }
   };
 
@@ -380,6 +446,95 @@ useEffect(() => {
     }
   };
 
+  // Team management functions
+  const handleEditTeam = (team) => {
+    setSelectedTeam(team);
+    setEditTeamFormData({
+      name: team.name,
+      description: team.description,
+      color: team.color,
+      maxMembers: team.maxMembers,
+      isActive: team.isActive,
+      isPublic: team.isPublic
+    });
+    setShowEditTeamModal(true);
+  };
+
+  const handleUpdateTeam = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.updateTeam(selectedTeam.id, editTeamFormData);
+      setShowEditTeamModal(false);
+      setSelectedTeam(null);
+      setEditTeamFormData({});
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to update team:', err);
+      setError('Failed to update team. Please try again.');
+    }
+  };
+
+  const handleDeleteTeam = (team) => {
+    setSelectedTeam(team);
+    setShowDeleteTeamModal(true);
+  };
+
+  const confirmDeleteTeam = async () => {
+    try {
+      await cyberwarService.deleteTeam(selectedTeam.id);
+      setShowDeleteTeamModal(false);
+      setSelectedTeam(null);
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to delete team:', err);
+      setError('Failed to delete team. Please try again.');
+    }
+  };
+
+  const handleAddMember = (team) => {
+    setSelectedTeam(team);
+    setNewMemberData({ userId: '', role: 'member' });
+    setShowAddMemberModal(true);
+  };
+
+  const handleAddMemberSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await cyberwarService.addTeamMember(selectedTeam.id, newMemberData.userId);
+      setShowAddMemberModal(false);
+      setSelectedTeam(null);
+      setNewMemberData({ userId: '', role: 'member' });
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to add team member:', err);
+      setError('Failed to add team member. Please try again.');
+    }
+  };
+
+  const handleRemoveMember = async (teamId, userId) => {
+    try {
+      await cyberwarService.removeTeamMember(teamId, userId);
+      fetchDashboardData();
+    } catch (err) {
+      console.error('Failed to remove team member:', err);
+      setError('Failed to remove team member. Please try again.');
+    }
+  };
+
+  const handleTeamAction = async (teamId, action) => {
+    try {
+      if (action === 'activate') {
+        await cyberwarService.updateTeam(teamId, { isActive: true });
+      } else if (action === 'deactivate') {
+        await cyberwarService.updateTeam(teamId, { isActive: false });
+      }
+      fetchDashboardData();
+    } catch (err) {
+      console.error(`Failed to ${action} team:`, err);
+      setError(`Failed to ${action} team. Please try again.`);
+    }
+  };
+
   const exportData = async (type) => {
     try {
       const data = await cyberwarService.exportAdminData(type);
@@ -447,7 +602,9 @@ useEffect(() => {
   }
 
   return (
-    <Container fluid className="py-4">
+    <>
+      <style>{tableStyles}</style>
+      <Container fluid className="py-4">
       {/* Header */}
       <Row className="mb-4">
         <Col>
@@ -689,7 +846,7 @@ useEffect(() => {
               </Button>
             </Card.Header>
             <Card.Body className="p-0">
-              <Table responsive>
+              <Table responsive className="table-dark">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -774,7 +931,7 @@ useEffect(() => {
               </Button>
             </Card.Header>
             <Card.Body className="p-0">
-              <Table responsive>
+              <Table responsive className="table-dark">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -832,13 +989,119 @@ useEffect(() => {
           </Card>
         </Tab>
 
+        <Tab eventKey="teams" title="Team Management">
+          <Card>
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <span>All Teams</span>
+              <Button variant="primary" onClick={() => setShowCreateTeam(true)}>
+                <FontAwesomeIcon icon={faPlus} className="me-1" />
+                Create Team
+              </Button>
+            </Card.Header>
+            <Card.Body className="p-0">
+              <Table responsive className="table-dark">
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>Members</th>
+                    <th>Status</th>
+                    <th>Matches</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {teams.map(team => (
+                    <tr key={team.id}>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div 
+                            className="rounded-circle me-2" 
+                            style={{ 
+                              width: '16px', 
+                              height: '16px', 
+                              backgroundColor: team.color || '#6c757d'
+                            }}
+                          ></div>
+                          <div>
+                            <strong>{team.name}</strong>
+                            <br />
+                            <small className="text-muted">{team.description}</small>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {team.memberCount || team.members?.length || 0}/{team.maxMembers}
+                        <br />
+                        <small className="text-muted">
+                          {team.members?.map(m => m.username).join(', ') || 'No members'}
+                        </small>
+                      </td>
+                      <td>
+                        <Badge bg={team.isActive ? 'success' : 'secondary'}>
+                          {team.isActive ? 'Active' : 'Inactive'}
+                        </Badge>
+                      </td>
+                      <td>
+                        <Badge bg="info">{team.totalMatches || 0} total</Badge>
+                        <br />
+                        <small className="text-muted">
+                          {team.activeMatches || 0} active
+                        </small>
+                      </td>
+                      <td>{new Date(team.createdAt).toLocaleDateString()}</td>
+                      <td>
+                        <div className="d-flex gap-1">
+                          <Button 
+                            size="sm" 
+                            variant={team.isActive ? 'outline-warning' : 'outline-success'}
+                            onClick={() => handleTeamAction(team.id, team.isActive ? 'deactivate' : 'activate')}
+                            title={team.isActive ? 'Deactivate Team' : 'Activate Team'}
+                          >
+                            {team.isActive ? 'Deactivate' : 'Activate'}
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline-info" 
+                            onClick={() => handleAddMember(team)}
+                            title="Add Member"
+                          >
+                            <FontAwesomeIcon icon={faUserPlus} />
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline-warning" 
+                            onClick={() => handleEditTeam(team)}
+                            title="Edit Team"
+                          >
+                            <FontAwesomeIcon icon={faEdit} />
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline-danger" 
+                            onClick={() => handleDeleteTeam(team)}
+                            title="Delete Team"
+                            disabled={team.totalMatches > 0}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Card.Body>
+          </Card>
+        </Tab>
+
         <Tab eventKey="infrastructure" title="Infrastructure">
           <Row>
             <Col lg={8}>
               <Card>
                 <Card.Header>Virtual Machines</Card.Header>
                 <Card.Body className="p-0">
-                  <Table responsive>
+                  <Table responsive className="table-dark">
                     <thead>
                       <tr>
                         <th>Name</th>
@@ -925,7 +1188,7 @@ useEffect(() => {
               <span>User Accounts</span>
             </Card.Header>
             <Card.Body className="p-0">
-              <Table responsive>
+              <Table responsive className="table-dark">
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -1516,7 +1779,282 @@ useEffect(() => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+
+      {/* Create Team Modal */}
+      <Modal show={showCreateTeam} onHide={() => setShowCreateTeam(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faPlus} className="me-2" />
+            Create New Team
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleCreateTeam}>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Team Name *</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={newTeam.name}
+                    onChange={(e) => setNewTeam({...newTeam, name: e.target.value})}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Team Color</Form.Label>
+                  <Form.Control 
+                    type="color"
+                    value={newTeam.color}
+                    onChange={(e) => setNewTeam({...newTeam, color: e.target.value})}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={newTeam.description}
+                onChange={(e) => setNewTeam({...newTeam, description: e.target.value})}
+              />
+            </Form.Group>
+            
+            <Row>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Max Members</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="2"
+                    max="10"
+                    value={newTeam.maxMembers}
+                    onChange={(e) => setNewTeam({...newTeam, maxMembers: parseInt(e.target.value)})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Check 
+                  type="checkbox"
+                  label="Public Team"
+                  checked={newTeam.isPublic}
+                  onChange={(e) => setNewTeam({...newTeam, isPublic: e.target.checked})}
+                  className="mb-3"
+                />
+              </Col>
+              <Col md={4}>
+                <Form.Check 
+                  type="checkbox"
+                  label="Active"
+                  checked={newTeam.isActive}
+                  onChange={(e) => setNewTeam({...newTeam, isActive: e.target.checked})}
+                  className="mb-3"
+                />
+              </Col>
+            </Row>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button variant="secondary" onClick={() => setShowCreateTeam(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                Create Team
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Edit Team Modal */}
+      <Modal show={showEditTeamModal} onHide={() => setShowEditTeamModal(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faEdit} className="me-2" />
+            Edit Team
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleUpdateTeam}>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Team Name *</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={editTeamFormData.name || ''}
+                    onChange={(e) => setEditTeamFormData({...editTeamFormData, name: e.target.value})}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Team Color</Form.Label>
+                  <Form.Control 
+                    type="color"
+                    value={editTeamFormData.color || '#007bff'}
+                    onChange={(e) => setEditTeamFormData({...editTeamFormData, color: e.target.value})}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+                as="textarea"
+                rows={3}
+                value={editTeamFormData.description || ''}
+                onChange={(e) => setEditTeamFormData({...editTeamFormData, description: e.target.value})}
+              />
+            </Form.Group>
+            
+            <Row>
+              <Col md={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Max Members</Form.Label>
+                  <Form.Control 
+                    type="number"
+                    min="2"
+                    max="10"
+                    value={editTeamFormData.maxMembers || 4}
+                    onChange={(e) => setEditTeamFormData({...editTeamFormData, maxMembers: parseInt(e.target.value)})}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Check 
+                  type="checkbox"
+                  label="Public Team"
+                  checked={editTeamFormData.isPublic || false}
+                  onChange={(e) => setEditTeamFormData({...editTeamFormData, isPublic: e.target.checked})}
+                  className="mb-3"
+                />
+              </Col>
+              <Col md={4}>
+                <Form.Check 
+                  type="checkbox"
+                  label="Active"
+                  checked={editTeamFormData.isActive || false}
+                  onChange={(e) => setEditTeamFormData({...editTeamFormData, isActive: e.target.checked})}
+                  className="mb-3"
+                />
+              </Col>
+            </Row>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button variant="secondary" onClick={() => setShowEditTeamModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                Update Team
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Delete Team Confirmation Modal */}
+      <Modal show={showDeleteTeamModal} onHide={() => setShowDeleteTeamModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faTrash} className="me-2 text-danger" />
+            Delete Team
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Alert variant="warning">
+            <FontAwesomeIcon icon={faExclamationTriangle} className="me-2" />
+            <strong>Warning:</strong> This action cannot be undone!
+          </Alert>
+          
+          {selectedTeam && (
+            <div>
+              <p>Are you sure you want to delete the team:</p>
+              <div className="bg-light p-3 rounded">
+                <h6 className="mb-1">{selectedTeam.name}</h6>
+                <p className="text-muted mb-1">{selectedTeam.description}</p>
+                <div className="mt-2">
+                  <Badge bg={selectedTeam.isActive ? 'success' : 'secondary'} className="me-2">
+                    {selectedTeam.isActive ? 'Active' : 'Inactive'}
+                  </Badge>
+                  <Badge bg="info" className="me-2">
+                    {selectedTeam.memberCount || selectedTeam.members?.length || 0} members
+                  </Badge>
+                </div>
+              </div>
+              <p className="mt-3 mb-0">
+                This will permanently delete the team and remove all members.
+              </p>
+              {selectedTeam.totalMatches > 0 && (
+                <Alert variant="danger" className="mt-3">
+                  <strong>Cannot delete:</strong> This team has participated in matches and cannot be deleted.
+                </Alert>
+              )}
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteTeamModal(false)}>
+            Cancel
+          </Button>
+          <Button 
+            variant="danger" 
+            onClick={confirmDeleteTeam}
+            disabled={selectedTeam?.totalMatches > 0}
+          >
+            <FontAwesomeIcon icon={faTrash} className="me-1" />
+            Delete Team
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Add Member Modal */}
+      <Modal show={showAddMemberModal} onHide={() => setShowAddMemberModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+            Add Team Member
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleAddMemberSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Select User *</Form.Label>
+              <Form.Select 
+                value={newMemberData.userId}
+                onChange={(e) => setNewMemberData({...newMemberData, userId: e.target.value})}
+                required
+              >
+                <option value="">Choose a user...</option>
+                {users.map(user => (
+                  <option key={user.id} value={user.id}>
+                    {user.username} ({user.email})
+                  </option>
+                ))}
+              </Form.Select>
+              <Form.Text className="text-muted">
+                Select a user to add to the team
+              </Form.Text>
+            </Form.Group>
+
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button variant="secondary" onClick={() => setShowAddMemberModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
+                Add Member
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+      </Container>
+    </>
   );
 };
 

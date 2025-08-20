@@ -50,6 +50,33 @@ import {
 import { AuthContext } from '../../context/AuthContext';
 import cyberwarService from '../../services/cyberwarService';
 
+// Custom styles for better table visibility
+const tableStyles = `
+  .table-dark {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  .table-dark thead th {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody tr {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+  }
+  .table-dark tbody tr:hover {
+    background-color: #2d2d2d !important;
+  }
+  .table-dark tbody td {
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody td small {
+    color: #b0b0b0 !important;
+  }
+`;
+
 const TeamDetail = () => {
   const { teamId } = useParams();
   const { user } = useContext(AuthContext);
@@ -218,7 +245,9 @@ const TeamDetail = () => {
   }
 
   return (
-    <Container className="py-4">
+    <>
+      <style>{tableStyles}</style>
+      <Container className="py-4">
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
@@ -454,7 +483,7 @@ const TeamDetail = () => {
                   <small>Join some matches to see results here</small>
                 </div>
               ) : (
-                <Table responsive striped>
+                <Table responsive striped className="table-dark">
                   <thead>
                     <tr>
                       <th>Match</th>
@@ -730,7 +759,8 @@ const TeamDetail = () => {
           )}
         </Modal.Body>
       </Modal>
-    </Container>
+      </Container>
+    </>
   );
 };
 

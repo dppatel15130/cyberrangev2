@@ -40,6 +40,33 @@ import {
 import cyberwarService from '../../services/cyberwarService';
 import useWebSocket from '../../hooks/useWebSocket';
 
+// Custom styles for better table visibility
+const tableStyles = `
+  .table-dark {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  .table-dark thead th {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody tr {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+  }
+  .table-dark tbody tr:hover {
+    background-color: #2d2d2d !important;
+  }
+  .table-dark tbody td {
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody td small {
+    color: #b0b0b0 !important;
+  }
+`;
+
 const Scoreboard = () => {
   const { matchId } = useParams();
   const navigate = useNavigate();
@@ -266,7 +293,9 @@ const Scoreboard = () => {
   }
 
   return (
-    <Container fluid className="py-4">
+    <>
+      <style>{tableStyles}</style>
+      <Container fluid className="py-4">
       {/* Header */}
       <Row className="mb-4">
         <Col>
@@ -374,8 +403,8 @@ const Scoreboard = () => {
 
           <Card>
             <Card.Body className="p-0">
-              <Table responsive className="mb-0">
-                <thead className="table-dark">
+              <Table responsive className="mb-0 table-dark">
+                <thead>
                   <tr>
                     <th 
                       style={{ cursor: 'pointer' }} 
@@ -711,7 +740,7 @@ const Scoreboard = () => {
             <Row>
               <Col md={6}>
                 <h6>Team Statistics</h6>
-                <Table size="sm">
+                <Table size="sm" className="table-dark">
                   <tbody>
                     <tr>
                       <td>Current Rank:</td>
@@ -784,7 +813,8 @@ const Scoreboard = () => {
           }
         }
       `}</style>
-    </Container>
+      </Container>
+    </>
   );
 };
 

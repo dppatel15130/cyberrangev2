@@ -208,6 +208,37 @@ class CyberWarService {
     }
   }
 
+  /**
+   * Delete a team (admin only)
+   * @param {string|number} teamId - ID of the team to delete
+   * @returns {Promise<Object>} Delete confirmation
+   */
+  async deleteTeam(teamId) {
+    try {
+      const response = await axios.delete(`/teams/${teamId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to delete team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to delete team' };
+    }
+  }
+
+  /**
+   * Add a member to a team (admin only)
+   * @param {string|number} teamId - ID of the team
+   * @param {string|number} userId - ID of the user to add
+   * @returns {Promise<Object>} Updated team data
+   */
+  async addTeamMember(teamId, userId) {
+    try {
+      const response = await axios.post(`/teams/${teamId}/members`, { userId });
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to add member ${userId} to team ${teamId}:`, error);
+      throw error.response?.data || { error: 'Failed to add team member' };
+    }
+  }
+
   // ===== MATCH OPERATIONS =====
 
   /**

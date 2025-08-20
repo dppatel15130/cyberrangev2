@@ -2,6 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { Container, Table, Form, Row, Col, Spinner, Alert } from 'react-bootstrap';
 import axios from '../../utils/axiosConfig';
 
+// Custom styles for better table visibility
+const tableStyles = `
+  .table-dark {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  .table-dark thead th {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody tr {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+  }
+  .table-dark tbody tr:hover {
+    background-color: #2d2d2d !important;
+  }
+  .table-dark tbody td {
+    border-color: #404040 !important;
+    color: #ffffff !important;
+  }
+  .table-dark tbody td small {
+    color: #b0b0b0 !important;
+  }
+`;
+
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [timeRange, setTimeRange] = useState('all');
@@ -90,7 +117,9 @@ const Leaderboard = () => {
   }
 
   return (
-    <Container className="py-4">
+    <>
+      <style>{tableStyles}</style>
+      <Container className="py-4">
       <Row className="mb-4">
         <Col>
           <h2>Leaderboard</h2>
@@ -113,7 +142,7 @@ const Leaderboard = () => {
         </Col>
       </Row>
 
-      <Table striped bordered hover responsive>
+      <Table striped bordered hover responsive className="table-dark">
         <thead>
           <tr>
             <th>Rank</th>
@@ -162,7 +191,8 @@ const Leaderboard = () => {
       <div className="text-muted text-center mt-4">
         <small>Last updated: {new Date().toLocaleString()}</small>
       </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 

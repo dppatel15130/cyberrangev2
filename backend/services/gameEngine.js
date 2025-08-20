@@ -271,6 +271,15 @@ class GameEngine {
       console.log(`Assigning VMs for match ${match.id}`);
       
       const matchData = this.activeMatches.get(match.id);
+      
+      // Ensure infrastructure.vms is initialized
+      if (!matchData.infrastructure) {
+        matchData.infrastructure = {};
+      }
+      if (!matchData.infrastructure.vms) {
+        matchData.infrastructure.vms = [];
+      }
+      
       const vmConfig = match.vmConfig || this.getDefaultVMConfig();
 
       for (const team of match.teams) {
